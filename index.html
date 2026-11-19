@@ -1,0 +1,1985 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黄页仓库入口 - 企业名录影像库,可信商业影像资料站点</title>
+<meta name="description" content="黄页仓库入口是专注企业名录与商业影像记录的品牌官网，汇集企业档案、行业走访、工厂实录与商脉人物访谈的原创高清内容。">
+<link rel="icon" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23122b3a'/%3E%3Cpath d='M16 44V20h10a8 8 0 010 16h-6v8z' fill='%23f5b544'/%3E%3Ccircle cx='44' cy='26' r='7' fill='%2360c7b0'/%3E%3Crect x='38' y='38' width='14' height='7' rx='3.5' fill='%23e8edf2'/%3E%3C/svg%3E">
+<style>
+:root{
+  --hy-head-h:104px;
+  --hy-nav:#0f2a38;
+  --hy-nav-2:#16394b;
+  --hy-ink:#12242e;
+  --hy-body:#3d525f;
+  --hy-mute:#7a8f9b;
+  --hy-line:#dfe7ec;
+  --hy-bg:#f4f8fa;
+  --hy-card:#ffffff;
+  --hy-amber:#f0a428;
+  --hy-amber-d:#cf8612;
+  --hy-teal:#2f9b8a;
+  --hy-teal-l:#e4f4f0;
+  --hy-blue:#2d6b93;
+  --hy-radius:14px;
+  --hy-shadow:0 6px 22px rgba(16,42,56,.08);
+  --hy-shadow-h:0 14px 34px rgba(16,42,56,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  color:var(--hy-body);
+  background:var(--hy-bg);
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;color:var(--hy-ink);line-height:1.35}
+p{margin:0 0 1em}
+button{font-family:inherit}
+.hy-wrap{width:min(1200px,92vw);margin:0 auto}
+.hy-section{padding:64px 0}
+.hy-section--tint{background:linear-gradient(180deg,#eef5f8 0%,#f4f8fa 100%)}
+.hy-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.hy-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:.16em;color:var(--hy-teal);
+  text-transform:uppercase;font-weight:700;margin-bottom:10px;
+}
+.hy-eyebrow::before{content:"";width:22px;height:2px;background:var(--hy-amber);display:inline-block}
+.hy-sec-title{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:.01em}
+.hy-sec-desc{color:var(--hy-mute);font-size:15px;max-width:640px;margin:10px 0 0}
+.hy-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 22px;border-radius:999px;border:1px solid transparent;
+  font-size:15px;font-weight:600;cursor:pointer;transition:.22s ease;
+  background:var(--hy-amber);color:#22160a;box-shadow:0 8px 18px rgba(240,164,40,.28);
+}
+.hy-btn:hover{transform:translateY(-2px);background:var(--hy-amber-d);color:#fff}
+.hy-btn--ghost{background:transparent;color:var(--hy-nav);border-color:rgba(15,42,56,.24);box-shadow:none}
+.hy-btn--ghost:hover{background:var(--hy-nav);color:#fff;border-color:var(--hy-nav)}
+.hy-btn--sm{padding:8px 16px;font-size:13.5px}
+.hy-skip{position:absolute;left:-9999px;top:0;background:var(--hy-nav);color:#fff;padding:10px 18px;z-index:9999}
+.hy-skip:focus{left:12px;top:12px}
+
+/* ============ 吸顶：公告条 + 页头 ============ */
+.hy-sticky{position:sticky;top:0;z-index:900;box-shadow:0 2px 14px rgba(16,42,56,.10)}
+.hy-notice{
+  background:linear-gradient(90deg,#0f2a38 0%,#183e52 55%,#0f2a38 100%);
+  color:#e7f0f4;font-size:13.5px;letter-spacing:.02em;
+}
+.hy-notice__inner{display:flex;align-items:center;gap:14px;padding:9px 0;flex-wrap:wrap}
+.hy-notice__tag{
+  flex:0 0 auto;background:var(--hy-amber);color:#241806;font-weight:800;
+  border-radius:4px;padding:2px 9px;font-size:12px;letter-spacing:.08em;
+}
+.hy-notice__list{
+  position:relative;flex:1 1 420px;min-width:220px;height:22px;overflow:hidden;
+}
+.hy-notice__item{
+  position:absolute;inset:0;display:flex;align-items:center;gap:8px;
+  opacity:0;transform:translateY(10px);transition:.5s ease;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.hy-notice__item.is-on{opacity:1;transform:translateY(0)}
+.hy-notice__item b{color:#ffce78;font-weight:700}
+.hy-notice__time{color:#8fb2c2;font-variant-numeric:tabular-nums}
+.hy-notice__more{flex:0 0 auto;color:#ffce78;font-weight:700;font-size:13px;border-bottom:1px dashed rgba(255,206,120,.5)}
+.hy-header{background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--hy-line)}
+.hy-header__inner{display:flex;align-items:center;gap:26px;padding:14px 0}
+.hy-brand{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.hy-brand__mark{
+  width:44px;height:44px;border-radius:12px;flex:0 0 auto;
+  background:linear-gradient(135deg,#15384a,#2f9b8a);display:grid;place-items:center;
+  color:#fff;font-weight:900;font-size:19px;letter-spacing:-.02em;
+}
+.hy-brand__text strong{display:block;font-size:19px;color:var(--hy-ink);letter-spacing:.02em;font-weight:800}
+.hy-brand__text span{display:block;font-size:11.5px;letter-spacing:.22em;color:var(--hy-mute);text-transform:uppercase}
+.hy-nav{display:flex;align-items:center;gap:4px;flex:1 1 auto;flex-wrap:wrap}
+.hy-nav a{
+  padding:9px 13px;border-radius:8px;font-size:15px;font-weight:600;color:#31505f;transition:.2s;
+}
+.hy-nav a:hover{background:var(--hy-teal-l);color:var(--hy-teal)}
+.hy-nav a.is-active{color:var(--hy-nav);background:#eef3f6}
+.hy-header__tools{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.hy-search{position:relative;display:flex;align-items:center}
+.hy-search input{
+  width:180px;padding:9px 34px 9px 14px;border-radius:999px;border:1px solid var(--hy-line);
+  background:#f7fafb;font-size:14px;color:var(--hy-ink);outline:none;transition:.24s;
+}
+.hy-search input:focus{width:230px;border-color:var(--hy-teal);background:#fff;box-shadow:0 0 0 4px rgba(47,155,138,.12)}
+.hy-search__icon{position:absolute;right:12px;pointer-events:none;color:var(--hy-mute);font-size:14px}
+.hy-search__hint{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;min-width:250px;
+  background:#fff;border:1px solid var(--hy-line);border-radius:12px;padding:10px;
+  box-shadow:var(--hy-shadow-h);font-size:13.5px;color:var(--hy-mute);display:none;z-index:20;
+}
+.hy-search__hint.is-on{display:block}
+.hy-search__hint b{color:var(--hy-teal)}
+.hy-toggle{
+  display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--hy-line);
+  background:#fff;color:var(--hy-nav);font-size:20px;cursor:pointer;line-height:1;
+}
+
+/* ============ 首屏 ============ */
+.hy-hero{
+  position:relative;overflow:hidden;color:#eaf2f6;
+  background:
+    radial-gradient(1100px 520px at 88% -12%,rgba(47,155,138,.42),transparent 62%),
+    radial-gradient(760px 420px at 4% 108%,rgba(240,164,40,.26),transparent 60%),
+    linear-gradient(160deg,#0d2634 0%,#123344 46%,#0b1f2b 100%);
+}
+.hy-hero__grid{
+  position:absolute;inset:0;opacity:.16;
+  background-image:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(circle at 60% 40%,#000 20%,transparent 78%);
+  pointer-events:none;
+}
+.hy-hero__inner{position:relative;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:52px;align-items:center;padding:64px 0 72px}
+.hy-hero__badge{
+  display:inline-flex;align-items:center;gap:9px;padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  font-size:13px;letter-spacing:.06em;color:#cfe6ee;margin-bottom:20px;
+}
+.hy-hero__badge i{width:7px;height:7px;border-radius:50%;background:#5fd8bd;box-shadow:0 0 0 4px rgba(95,216,189,.22);display:inline-block}
+.hy-hero h1{font-size:clamp(34px,4.6vw,56px);letter-spacing:.01em;color:#fff;font-weight:900}
+.hy-hero h1 em{font-style:normal;color:var(--hy-amber)}
+.hy-hero__lead{margin:18px 0 12px;font-size:clamp(16px,1.4vw,19px);color:#bcd6e1;max-width:33em}
+.hy-hero__intro{font-size:14.8px;color:#9fbcc9;max-width:34em;margin-bottom:26px;line-height:1.85}
+.hy-hero__actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.hy-hero__stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:520px}
+.hy-stat{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:12px;padding:12px 14px;transition:.24s;
+}
+.hy-stat:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
+.hy-stat b{display:block;font-size:24px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.hy-stat span{font-size:12.5px;color:#a9c5d1;letter-spacing:.04em}
+.hy-hero__visual{position:relative}
+.hy-hero__frame{
+  border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 26px 60px rgba(0,0,0,.42);background:#0a1a24;
+}
+.hy-hero__frame svg{width:100%;height:auto;display:block}
+.hy-hero__float{
+  position:absolute;left:-18px;bottom:-20px;background:#fff;color:var(--hy-ink);
+  border-radius:14px;padding:12px 16px;box-shadow:var(--hy-shadow-h);display:flex;gap:12px;align-items:center;
+}
+.hy-hero__float b{font-size:15px;display:block}
+.hy-hero__float span{font-size:12px;color:var(--hy-mute)}
+.hy-hero__float .hy-dot{width:34px;height:34px;border-radius:10px;background:var(--hy-teal-l);color:var(--hy-teal);display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+
+/* ============ 深度解析 ============ */
+.hy-about{padding-top:8px}
+.hy-about__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:44px;align-items:start}
+.hy-about__panel{
+  background:var(--hy-card);border:1px solid var(--hy-line);border-radius:var(--hy-radius);
+  padding:26px;box-shadow:var(--hy-shadow);position:sticky;top:calc(var(--hy-head-h) + 18px);
+}
+.hy-about__panel h3{font-size:18px;margin-bottom:8px}
+.hy-about__panel p{font-size:14px;color:var(--hy-mute);margin-bottom:18px}
+.hy-pill-list{display:flex;flex-wrap:wrap;gap:8px}
+.hy-pill{
+  font-size:12.5px;padding:5px 12px;border-radius:999px;background:#eef4f7;color:#3c5c6b;font-weight:600;
+  border:1px solid #e0eaef;
+}
+.hy-prose{font-size:15.6px;line-height:1.95;color:#3f5764}
+.hy-prose h3{margin:26px 0 10px;font-size:19px;color:var(--hy-ink)}
+.hy-prose h3:first-child{margin-top:0}
+.hy-prose strong{color:var(--hy-ink)}
+.hy-prose .hy-hl{background:linear-gradient(transparent 62%,rgba(240,164,40,.42) 0);padding:0 2px;font-weight:700;color:var(--hy-ink)}
+.hy-prose ol{padding-left:22px;margin:0 0 1em}
+.hy-prose ol li{margin-bottom:.5em}
+.hy-quote{
+  border-left:3px solid var(--hy-teal);background:var(--hy-teal-l);
+  padding:14px 18px;border-radius:0 10px 10px 0;color:#1f5f57;font-size:14.6px;margin:20px 0 0;
+}
+
+/* ============ 焦点视频 ============ */
+.hy-hero-videos{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(0,1fr);gap:24px}
+.hy-card{
+  background:var(--hy-card);border:1px solid var(--hy-line);border-radius:var(--hy-radius);
+  overflow:hidden;box-shadow:var(--hy-shadow);transition:transform .26s ease,box-shadow .26s ease,border-color .26s;
+  display:flex;flex-direction:column;
+}
+.hy-card:hover{transform:translateY(-5px);box-shadow:var(--hy-shadow-h);border-color:#cfe0e8}
+.hy-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#173243}
+.hy-thumb svg{width:100%;height:100%;display:block;transition:transform .5s ease}
+.hy-card:hover .hy-thumb svg{transform:scale(1.045)}
+.hy-thumb__mask{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,24,33,0) 42%,rgba(8,24,33,.72) 100%)}
+.hy-thumb__tags{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+.hy-tag{
+  font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:6px;
+  background:rgba(255,255,255,.9);color:#17394a;letter-spacing:.03em;
+}
+.hy-tag--amber{background:var(--hy-amber);color:#2a1c05}
+.hy-tag--teal{background:rgba(47,155,138,.94);color:#fff}
+.hy-thumb__time{
+  position:absolute;right:12px;bottom:12px;z-index:2;font-size:12px;color:#fff;font-variant-numeric:tabular-nums;
+  background:rgba(8,24,33,.72);padding:2px 8px;border-radius:5px;
+}
+.hy-thumb__play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);z-index:2;
+  width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.92);
+  display:grid;place-items:center;opacity:0;transition:.28s ease;box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.hy-card:hover .hy-thumb__play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.hy-thumb__play::before{content:"";border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #12303f;margin-left:3px}
+.hy-card__body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1 1 auto}
+.hy-card__title{font-size:16.5px;font-weight:700;color:var(--hy-ink);margin-bottom:6px;line-height:1.5}
+.hy-card__desc{font-size:13.5px;color:var(--hy-mute);margin:0 0 12px;flex:1 1 auto}
+.hy-card__meta{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#8ba0ab;flex-wrap:wrap}
+.hy-avatar{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;letter-spacing:0;
+}
+.hy-card__actions{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px dashed #e8eef1}
+.hy-act{
+  border:1px solid var(--hy-line);background:#fff;color:#456272;border-radius:999px;
+  padding:5px 12px;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.2s;
+}
+.hy-act:hover{border-color:var(--hy-teal);color:var(--hy-teal);background:var(--hy-teal-l)}
+.hy-act.is-liked{background:#fff2e3;border-color:#f3c98c;color:#b97a12}
+.hy-act.is-saved{background:#e9f6f2;border-color:#9ed8cb;color:#22796c}
+.hy-act svg{width:14px;height:14px;fill:currentColor}
+.hy-hero-videos .hy-card--lead .hy-card__title{font-size:20px}
+
+.hy-mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.hy-mini .hy-card__title{font-size:14.8px}
+.hy-mini .hy-card__body{padding:13px 14px 15px}
+.hy-mini .hy-card__desc{font-size:12.6px;margin-bottom:9px}
+
+/* ============ 专题 ============ */
+.hy-topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.hy-topic{
+  position:relative;border-radius:var(--hy-radius);overflow:hidden;color:#f2f8fa;
+  min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:22px;box-shadow:var(--hy-shadow);transition:transform .26s,box-shadow .26s;
+}
+.hy-topic:hover{transform:translateY(-5px);box-shadow:var(--hy-shadow-h)}
+.hy-topic svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hy-topic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,25,34,.18) 0%,rgba(9,25,34,.86) 100%);z-index:1}
+.hy-topic__body{position:relative;z-index:2}
+.hy-topic__state{
+  display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.08em;
+  background:var(--hy-amber);color:#2a1c05;padding:3px 9px;border-radius:5px;margin-bottom:10px;
+}
+.hy-topic__state--on{background:#5fd8bd;color:#0b2a25}
+.hy-topic h3{color:#fff;font-size:19px;margin-bottom:7px}
+.hy-topic p{font-size:13.4px;color:#c2d6df;margin:0}
+.hy-topic__foot{margin-top:12px;font-size:12.4px;color:#9fb9c5;display:flex;gap:12px}
+
+/* ============ 创作者 ============ */
+.hy-creators{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.hy-creator{
+  background:var(--hy-card);border:1px solid var(--hy-line);border-radius:var(--hy-radius);
+  padding:22px;text-align:center;transition:.26s;box-shadow:var(--hy-shadow);cursor:pointer;
+}
+.hy-creator:hover{transform:translateY(-5px);box-shadow:var(--hy-shadow-h);border-color:#cfe0e8}
+.hy-creator__ava{
+  width:66px;height:66px;border-radius:22px;margin:0 auto 12px;display:grid;place-items:center;
+  font-size:24px;font-weight:900;color:#fff;box-shadow:0 8px 18px rgba(16,42,56,.18);
+}
+.hy-creator h3{font-size:16px;margin-bottom:3px}
+.hy-creator__field{font-size:12.4px;color:var(--hy-teal);font-weight:700;letter-spacing:.04em;margin-bottom:9px}
+.hy-creator__desc{font-size:12.9px;color:var(--hy-mute);min-height:60px;margin:0 0 12px}
+.hy-creator__nums{display:flex;justify-content:center;gap:14px;font-size:12px;color:#8ba0ab;border-top:1px dashed #e8eef1;padding-top:11px}
+.hy-creator__nums b{display:block;color:var(--hy-ink);font-size:14.5px;font-variant-numeric:tabular-nums}
+
+/* ============ 视频流 ============ */
+.hy-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.hy-chip{
+  border:1px solid var(--hy-line);background:#fff;color:#3f5b69;border-radius:999px;
+  padding:7px 16px;font-size:13.6px;font-weight:600;cursor:pointer;transition:.2s;
+}
+.hy-chip:hover{border-color:var(--hy-teal);color:var(--hy-teal)}
+.hy-chip.is-on{background:var(--hy-nav);border-color:var(--hy-nav);color:#fff}
+.hy-stream{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.hy-empty{display:none;text-align:center;color:var(--hy-mute);padding:40px 0;font-size:14.5px}
+.hy-empty.is-on{display:block}
+
+/* ============ 影像墙 ============ */
+.hy-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;grid-auto-rows:150px}
+.hy-wall__item{
+  position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--hy-shadow);cursor:pointer;
+}
+.hy-wall__item svg{width:100%;height:100%;display:block;transition:transform .5s}
+.hy-wall__item:hover svg{transform:scale(1.06)}
+.hy-wall__cap{
+  position:absolute;inset:auto 0 0 0;padding:20px 12px 10px;font-size:12.4px;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(8,24,33,.82));
+}
+.hy-wall__item--lg{grid-column:span 2;grid-row:span 2}
+.hy-wall__item--md{grid-column:span 2;grid-row:span 1}
+
+/* ============ 评论 ============ */
+.hy-reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.hy-review{
+  background:var(--hy-card);border:1px solid var(--hy-line);border-radius:var(--hy-radius);
+  padding:20px;box-shadow:var(--hy-shadow);display:flex;flex-direction:column;gap:10px;
+}
+.hy-review__top{display:flex;align-items:center;gap:10px}
+.hy-review__who b{display:block;font-size:14px;color:var(--hy-ink)}
+.hy-review__who span{font-size:11.8px;color:var(--hy-mute)}
+.hy-review p{margin:0;font-size:13.8px;color:#455e6b;line-height:1.8}
+.hy-stars{color:var(--hy-amber);font-size:13px;letter-spacing:2px;margin-left:auto}
+
+/* ============ 动态 / 灵感 ============ */
+.hy-split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+.hy-news{display:flex;flex-direction:column;gap:2px;background:var(--hy-card);border:1px solid var(--hy-line);border-radius:var(--hy-radius);overflow:hidden;box-shadow:var(--hy-shadow)}
+.hy-news__item{display:flex;gap:16px;padding:18px 22px;border-bottom:1px solid #eef3f6;transition:.2s}
+.hy-news__item:last-child{border-bottom:none}
+.hy-news__item:hover{background:#f7fbfc}
+.hy-news__date{flex:0 0 62px;font-variant-numeric:tabular-nums;color:var(--hy-teal);font-weight:800;font-size:13px;letter-spacing:.02em;padding-top:2px}
+.hy-news__txt h3{font-size:15px;margin-bottom:4px}
+.hy-news__txt p{font-size:13.2px;color:var(--hy-mute);margin:0}
+.hy-idea{
+  background:linear-gradient(150deg,#123344,#0d2733);color:#d8e8ee;border-radius:var(--hy-radius);
+  padding:26px;box-shadow:var(--hy-shadow);
+}
+.hy-idea h3{color:#fff;font-size:17px;margin-bottom:6px}
+.hy-idea > p{font-size:13.4px;color:#9fbcc9;margin-bottom:18px}
+.hy-idea__list{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.hy-idea__row{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:10px;
+  padding:11px 14px;font-size:13.4px;display:flex;gap:10px;align-items:flex-start;
+}
+.hy-idea__row b{color:#ffce78;flex:0 0 auto;font-variant-numeric:tabular-nums}
+.hy-idea .hy-btn{width:100%}
+
+/* ============ FAQ ============ */
+.hy-faq{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.hy-faq details{
+  background:var(--hy-card);border:1px solid var(--hy-line);border-radius:12px;
+  padding:0 20px;box-shadow:0 3px 12px rgba(16,42,56,.05);transition:.2s;
+}
+.hy-faq details[open]{border-color:#bcd9ea;box-shadow:var(--hy-shadow)}
+.hy-faq summary{
+  list-style:none;cursor:pointer;padding:16px 0;font-weight:700;color:var(--hy-ink);font-size:15.2px;
+  display:flex;align-items:center;gap:12px;
+}
+.hy-faq summary::-webkit-details-marker{display:none}
+.hy-faq summary::before{
+  content:"Q";flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--hy-teal-l);
+  color:var(--hy-teal);font-size:12px;display:grid;place-items:center;font-weight:900;
+}
+.hy-faq summary::after{content:"+";margin-left:auto;color:var(--hy-mute);font-size:19px;font-weight:400;line-height:1}
+.hy-faq details[open] summary::after{content:"–"}
+.hy-faq__ans{padding:0 0 18px 34px;font-size:14.2px;color:#4a6371;line-height:1.85}
+
+/* ============ CTA + 页脚 ============ */
+.hy-cta{
+  background:linear-gradient(120deg,#123344,#1a4557 60%,#123344);border-radius:20px;
+  padding:44px;color:#e8f2f6;display:flex;align-items:center;justify-content:space-between;
+  gap:28px;flex-wrap:wrap;box-shadow:var(--hy-shadow-h);position:relative;overflow:hidden;
+}
+.hy-cta::before{
+  content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,164,40,.34),transparent 68%);
+}
+.hy-cta h2{color:#fff;font-size:clamp(21px,2.4vw,27px);position:relative;margin-bottom:8px}
+.hy-cta p{color:#a9c6d2;font-size:14.4px;margin:0;max-width:46em;position:relative}
+.hy-cta__btns{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.hy-footer{background:#0c2029;color:#9db6c2;padding:52px 0 0;margin-top:0}
+.hy-footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:38px}
+.hy-footer h4{color:#fff;font-size:14.5px;margin-bottom:14px;letter-spacing:.04em}
+.hy-footer p{font-size:13.2px;line-height:1.9;color:#8fa9b6;margin:0 0 10px}
+.hy-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.hy-footer ul a{font-size:13.2px;color:#9db6c2;transition:.2s}
+.hy-footer ul a:hover{color:var(--hy-amber)}
+.hy-footer__brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.hy-footer__brand .hy-brand__mark{width:38px;height:38px;border-radius:10px;font-size:16px}
+.hy-footer__brand strong{color:#fff;font-size:16px;display:block}
+.hy-footer__brand span{font-size:11px;letter-spacing:.2em;color:#6f8b98}
+.hy-footer__bottom{
+  border-top:1px solid rgba(255,255,255,.09);padding:18px 0;font-size:12.5px;color:#718b98;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.hy-footer__bottom a{color:#8fa9b6}
+.hy-footer__bottom a:hover{color:var(--hy-amber)}
+
+/* ============ Toast & 弹窗 ============ */
+.hy-toast{
+  position:fixed;left:50%;bottom:32px;transform:translate(-50%,16px);z-index:1200;
+  background:#0f2a38;color:#fff;padding:11px 22px;border-radius:999px;font-size:13.6px;
+  box-shadow:0 14px 32px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:.3s;
+}
+.hy-toast.is-on{opacity:1;transform:translate(-50%,0)}
+.hy-modal{
+  position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(8,24,33,.62);backdrop-filter:blur(4px);
+}
+.hy-modal.is-on{display:flex}
+.hy-modal__box{
+  background:#fff;border-radius:16px;max-width:460px;width:100%;padding:26px;position:relative;
+  box-shadow:0 26px 60px rgba(0,0,0,.3);animation:hyIn .24s ease;
+}
+@keyframes hyIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hy-modal__box h3{font-size:18px;margin-bottom:8px}
+.hy-modal__box p{font-size:13.8px;color:var(--hy-mute);margin-bottom:18px}
+.hy-modal__close{
+  position:absolute;right:14px;top:12px;border:none;background:#f0f5f7;width:30px;height:30px;
+  border-radius:8px;cursor:pointer;color:#5a7684;font-size:16px;line-height:1;
+}
+.hy-modal__close:hover{background:#e3edf1}
+.hy-field{margin-bottom:13px}
+.hy-field label{display:block;font-size:12.8px;font-weight:700;color:#3f5b69;margin-bottom:5px}
+.hy-field input,.hy-field textarea{
+  width:100%;padding:10px 12px;border:1px solid var(--hy-line);border-radius:9px;
+  font-size:13.8px;font-family:inherit;outline:none;color:var(--hy-ink);transition:.2s;
+}
+.hy-field input:focus,.hy-field textarea:focus{border-color:var(--hy-teal);box-shadow:0 0 0 3px rgba(47,155,138,.12)}
+.hy-field textarea{resize:vertical;min-height:78px}
+.hy-modal__box .hy-btn{width:100%}
+.hy-share{display:flex;gap:10px;flex-wrap:wrap}
+.hy-share button{
+  flex:1 1 30%;padding:11px 8px;border-radius:10px;border:1px solid var(--hy-line);background:#f7fafb;
+  font-size:13px;font-weight:700;color:#3f5b69;cursor:pointer;transition:.2s;
+}
+.hy-share button:hover{background:var(--hy-teal-l);border-color:#9ed8cb;color:#22796c}
+.hy-top{
+  position:fixed;right:22px;bottom:24px;z-index:1000;width:44px;height:44px;border-radius:50%;
+  border:none;background:var(--hy-nav);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 10px 24px rgba(16,42,56,.3);opacity:0;pointer-events:none;transition:.28s;
+}
+.hy-top.is-on{opacity:1;pointer-events:auto}
+.hy-top:hover{background:var(--hy-amber);color:#22160a}
+
+/* ============ 滚动偏移 ============ */
+section[id],div[id="hyHome"]{scroll-margin-top:calc(var(--hy-head-h) + 12px)}
+
+/* ============ 响应式 ============ */
+@media(max-width:1080px){
+  .hy-hero__inner{grid-template-columns:1fr;gap:38px;padding:52px 0 60px}
+  .hy-hero__visual{max-width:640px}
+  .hy-about__grid{grid-template-columns:1fr}
+  .hy-about__panel{position:static}
+  .hy-creators{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hy-stream{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hy-footer__grid{grid-template-columns:1fr 1fr}
+  .hy-reviews{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  :root{--hy-head-h:96px}
+  .hy-toggle{display:block}
+  .hy-nav{
+    position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;
+    align-items:stretch;padding:10px 0;border-bottom:1px solid var(--hy-line);
+    box-shadow:0 18px 30px rgba(16,42,56,.14);display:none;
+  }
+  .hy-nav.is-open{display:flex}
+  .hy-nav a{padding:12px 22px;border-radius:0}
+  .hy-header__inner{gap:14px;position:relative}
+  .hy-header__tools{margin-left:auto}
+  .hy-search input{width:130px}
+  .hy-search input:focus{width:160px}
+  .hy-notice__more{display:none}
+  .hy-hero-videos{grid-template-columns:1fr}
+  .hy-topics{grid-template-columns:1fr}
+  .hy-split{grid-template-columns:1fr}
+  .hy-wall{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:140px}
+  .hy-wall__item--lg{grid-column:span 2;grid-row:span 1}
+}
+@media(max-width:640px){
+  :root{--hy-head-h:92px}
+  .hy-section{padding:46px 0}
+  .hy-hero__stats{grid-template-columns:1fr 1fr}
+  .hy-hero__stats .hy-stat:last-child{grid-column:span 2}
+  .hy-creators{grid-template-columns:1fr}
+  .hy-stream{grid-template-columns:1fr}
+  .hy-mini-grid{grid-template-columns:1fr}
+  .hy-reviews{grid-template-columns:1fr}
+  .hy-footer__grid{grid-template-columns:1fr;gap:26px}
+  .hy-cta{padding:30px}
+  .hy-search input{width:104px}
+  .hy-search input:focus{width:126px}
+  .hy-brand__text span{display:none}
+  .hy-hero__float{left:0;bottom:-14px}
+  .hy-notice__inner{padding:7px 0}
+  .hy-notice{font-size:12.5px}
+  .hy-faq summary{font-size:14.2px}
+  .hy-faq__ans{padding-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="hy-skip" href="#hyMain">跳到主要内容</a>
+
+<!-- ============ 吸顶区域：公告条 + 页头 ============ -->
+<div class="hy-sticky">
+  <div class="hy-notice" role="region" aria-label="站点公告">
+    <div class="hy-wrap hy-notice__inner">
+      <span class="hy-notice__tag">最新条目</span>
+      <div class="hy-notice__list" id="hyNoticeList">
+        <div class="hy-notice__item is-on"><b>新增</b>长三角精密制造企业档案 128 家，附厂区实拍与资质索引<span class="hy-notice__time">11-19</span></div>
+        <div class="hy-notice__item"><b>更新</b>《商脉访谈》第 24 期：一家三十年老厂的接班记录<span class="hy-notice__time">11-18</span></div>
+        <div class="hy-notice__item"><b>开放</b>2026 年度企业影像征集，名录商户可提交厂区与门店素材<span class="hy-notice__time">11-17</span></div>
+        <div class="hy-notice__item"><b>上线</b>行业热度榜 · 商贸流通分类榜单，共 60 条企业索引<span class="hy-notice__time">11-15</span></div>
+      </div>
+      <a class="hy-notice__more" href="#hyNews">全部动态 →</a>
+    </div>
+  </div>
+  <header class="hy-header">
+    <div class="hy-wrap hy-header__inner">
+      <a class="hy-brand" href="#hyHome" aria-label="黄页仓库入口 官网首页">
+        <span class="hy-brand__mark">黄</span>
+        <span class="hy-brand__text">
+          <strong>黄页仓库入口</strong>
+          <span>Directory Video Archive</span>
+        </span>
+      </a>
+      <nav class="hy-nav" id="hyNav" aria-label="主导航">
+        <a href="#hyHome" class="is-active">首页</a>
+        <a href="#hyFocus">焦点影像</a>
+        <a href="#hyTopics">专题企划</a>
+        <a href="#hyCreators">创作者</a>
+        <a href="#hyStream">企业名录</a>
+        <a href="#hyWall">影像墙</a>
+        <a href="#hyNews">企业动态</a>
+        <a href="#hyFaq">帮助</a>
+        <a href="#hyContact">联系</a>
+      </nav>
+      <div class="hy-header__tools">
+        <div class="hy-search">
+          <input type="search" id="hySearch" placeholder="搜索企业、行业、创作者" aria-label="站内搜索" autocomplete="off">
+          <span class="hy-search__icon" aria-hidden="true">⌕</span>
+          <div class="hy-search__hint" id="hySearchHint"></div>
+        </div>
+        <button class="hy-toggle" id="hyToggle" aria-expanded="false" aria-controls="hyNav" aria-label="展开导航菜单">☰</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="hyMain">
+
+<!-- ============ 首屏 ============ -->
+<section class="hy-hero" id="hyHome">
+  <div class="hy-hero__grid" aria-hidden="true"></div>
+  <div class="hy-wrap hy-hero__inner">
+    <div>
+      <span class="hy-hero__badge"><i aria-hidden="true"></i>黄页仓库入口 · 品牌官方网站 · 持续运营第 9 年</span>
+      <h1>黄页仓库入口</h1>
+      <p class="hy-hero__lead">把一页页静态的企业信息，拍成可以按图索骥的商业影像档案。</p>
+      <p class="hy-hero__intro">作为深耕企业名录与商业记录的垂直领域平台，黄页仓库入口以原创高清影像为入口，为采购方、合作方与求职者提供可核验的企业样本：厂区实景、产线节拍、门店秩序、掌门人访谈，一并归档。我们相信，可信的商业关系始于一次真实的看见。</p>
+      <div class="hy-hero__actions">
+        <a class="hy-btn" href="#hyStream">浏览企业影像名录</a>
+        <a class="hy-btn hy-btn--ghost" href="#hyContact">提交企业档案</a>
+        <button class="hy-btn hy-btn--ghost" id="hyShareTop" type="button">分享本站</button>
+      </div>
+      <div class="hy-hero__stats">
+        <div class="hy-stat"><b data-count="12480">0</b><span>已归档企业条目</span></div>
+        <div class="hy-stat"><b data-count="3160">0</b><span>原创影像素材</span></div>
+        <div class="hy-stat"><b data-count="286">0</b><span>合作商协会与园区</span></div>
+      </div>
+    </div>
+    <div class="hy-hero__visual">
+      <div class="hy-hero__frame">
+        <svg viewBox="0 0 720 430" role="img" aria-label="黄页仓库入口官网首屏主视觉：仓库货架与档案影像工作台">
+          <defs>
+            <linearGradient id="hyHeroSky" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#16394b"/><stop offset="1" stop-color="#0a1c26"/>
+            </linearGradient>
+            <linearGradient id="hyHeroShelf" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#1d6f62"/>
+            </linearGradient>
+            <linearGradient id="hyHeroAmber" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#f0a428"/><stop offset="1" stop-color="#f6c96b"/>
+            </linearGradient>
+          </defs>
+          <rect width="720" height="430" fill="url(#hyHeroSky)"/>
+          <g opacity=".22" stroke="#8fd6c9" stroke-width="1">
+            <path d="M0 90h720M0 180h720M0 270h720M0 360h720"/>
+            <path d="M90 0v430M210 0v430M330 0v430M450 0v430M570 0v430M690 0v430"/>
+          </g>
+          <g>
+            <rect x="46" y="196" width="392" height="180" rx="8" fill="#0e2836" stroke="#2a5b6f"/>
+            <rect x="62" y="126" width="42" height="250" fill="url(#hyHeroShelf)" opacity=".9"/>
+            <rect x="116" y="126" width="42" height="250" fill="url(#hyHeroShelf)" opacity=".78"/>
+            <rect x="170" y="126" width="42" height="250" fill="url(#hyHeroShelf)" opacity=".62"/>
+            <rect x="224" y="126" width="42" height="250" fill="url(#hyHeroShelf)" opacity=".9"/>
+            <rect x="278" y="126" width="42" height="250" fill="url(#hyHeroShelf)" opacity=".72"/>
+            <rect x="332" y="126" width="42" height="250" fill="url(#hyHeroShelf)" opacity=".56"/>
+            <g fill="#f0a428" opacity=".92">
+              <rect x="70" y="152" width="26" height="9" rx="3"/>
+              <rect x="124" y="188" width="26" height="9" rx="3"/>
+              <rect x="178" y="152" width="26" height="9" rx="3"/>
+              <rect x="232" y="222" width="26" height="9" rx="3"/>
+              <rect x="286" y="188" width="26" height="9" rx="3"/>
+              <rect x="340" y="152" width="26" height="9" rx="3"/>
+            </g>
+            <g fill="#d6e7ee" opacity=".75">
+              <rect x="70" y="176" width="26" height="5" rx="2.5"/>
+              <rect x="124" y="212" width="26" height="5" rx="2.5"/>
+              <rect x="178" y="176" width="26" height="5" rx="2.5"/>
+              <rect x="232" y="246" width="26" height="5" rx="2.5"/>
+              <rect x="286" y="212" width="26" height="5" rx="2.5"/>
+              <rect x="340" y="176" width="26" height="5" rx="2.5"/>
+            </g>
+          </g>
+          <g>
+            <rect x="440" y="96" width="238" height="150" rx="10" fill="#0d2430" stroke="#33708a"/>
+            <rect x="452" y="108" width="214" height="112" rx="6" fill="#123a4c"/>
+            <circle cx="559" cy="162" r="30" fill="none" stroke="#5fd8bd" stroke-width="3"/>
+            <path d="M540 162l14 14 26-30" fill="none" stroke="#5fd8bd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="456" y="228" width="86" height="8" rx="4" fill="#2a5b6f"/>
+            <rect x="552" y="228" width="60" height="8" rx="4" fill="#2a5b6f"/>
+          </g>
+          <g>
+            <rect x="440" y="272" width="238" height="104" rx="10" fill="#0f2a38" stroke="#2a5b6f"/>
+            <rect x="456" y="288" width="60" height="42" rx="5" fill="url(#hyHeroAmber)"/>
+            <rect x="526" y="288" width="60" height="42" rx="5" fill="#2f9b8a" opacity=".8"/>
+            <rect x="596" y="288" width="60" height="42" rx="5" fill="#4a7c96" opacity=".8"/>
+            <rect x="456" y="342" width="200" height="7" rx="3.5" fill="#2a5b6f"/>
+            <rect x="456" y="356" width="140" height="5" rx="2.5" fill="#22495a"/>
+          </g>
+          <g opacity=".9">
+            <circle cx="404" cy="70" r="24" fill="none" stroke="#f0a428" stroke-width="2" stroke-dasharray="4 6"/>
+            <path d="M396 70h16M404 62v16" stroke="#f0a428" stroke-width="2" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hy-hero__float">
+        <span class="hy-dot" aria-hidden="true">◉</span>
+        <span><b>名录影像双轨归档</b><span>资质文本 + 现场影像，互为校验</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 品牌解析（长文） ============ -->
+<section class="hy-section hy-about" id="hyAbout">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">About the Archive</span>
+        <h2 class="hy-sec-title">黄页仓库入口是什么：一份会动起来的企业名录</h2>
+        <p class="hy-sec-desc">从纸页到镜头，我们重新定义了"查企业"这件事。以下内容帮助你完整理解这个平台的位置、方法与边界。</p>
+      </div>
+      <a class="hy-btn hy-btn--ghost hy-btn--sm" href="#hyFaq">查看常见问题</a>
+    </div>
+    <div class="hy-about__grid">
+      <aside class="hy-about__panel">
+        <h3>平台速览</h3>
+        <p>一句话定位：以影像为索引、以企业为条目的商业名录社区。</p>
+        <div class="hy-pill-list">
+          <span class="hy-pill">企业名录</span>
+          <span class="hy-pill">厂区实录</span>
+          <span class="hy-pill">商脉访谈</span>
+          <span class="hy-pill">行业观察</span>
+          <span class="hy-pill">资质索引</span>
+          <span class="hy-pill">名录商户</span>
+          <span class="hy-pill">原创高清</span>
+          <span class="hy-pill">社区共创</span>
+        </div>
+      </aside>
+      <div class="hy-prose">
+        <h3>一、为什么需要"影像版黄页"</h3>
+        <p>传统黄页给出的是一行行文字：企业名称、注册地址、经营范围、联系电话。这些信息当然重要，但它们无法回答采购经理在出差前最想知道的三个问题——这家工厂的产线到底长什么样？仓库周转是否跟得上订单节奏？对接人讲话时的分寸感，是否值得长期合作？<strong>黄页仓库入口</strong>要补上的，正是文字与现场之间那段空白。</p>
+        <p>我们把每个企业条目当作一个小型档案单元来经营：一侧是结构化的资质与经营信息，另一侧是现场的影像记录。影像不是宣传片，而是<b>可核验的观察样本</b>——镜头会走进车间、走进仓库、走进门店后厨，记录下真实的动线、设备铭牌、作业人数与作业节拍。我们认为，<span class="hy-hl">一份值得信赖的企业名录，必须让人看见细节</span>，而细节只在真实拍摄中才会自然流露。</p>
+
+        <h3>二、九年的沉淀与三道工序</h3>
+        <p>平台自 2017 年起持续运营，最早只是几位制造业采购顾问的私人笔记，后来逐渐演变成一个由创作者、行业协会与名录商户共同维护的内容生态。到今天，我们已与 286 家商协会、产业园区、地方商会建立长期合作，累计归档企业条目超过一万两千条。每一条上线前都要经过三道工序：</p>
+        <ol>
+          <li><strong>资料核验</strong>：执照、经营范围、场地信息由企业授权提交，交叉比对公开登记信息与园区侧证明，必要时由在地创作者实地走访确认。</li>
+          <li><strong>影像采集</strong>：由签约创作者按统一的分镜规范拍摄，覆盖外立面、生产或作业区、仓储区、接待区四类场景，单条素材不少于 90 秒可用画面。</li>
+          <li><strong>编辑归档</strong>：编辑团队完成粗剪、字幕与要点标注，生成 3 分钟版与 45 秒速览版，对应挂载到企业条目下，并标注拍摄日期，方便判断信息新鲜度。</li>
+        </ol>
+        <p>这三道工序决定了一件事：这里的每一条内容都慢。我们不追求条目的爆发式增长，而是要求<b>每一条都能被拿去用</b>。正是因为这种克制，黄页仓库入口才在采购与招商人群里慢慢积累起口碑，成为不少企业的"出差前预研工具"。</p>
+
+        <h3>三、栏目结构与内容生态</h3>
+        <p>平台内容分为四条主线。第一条是<strong>企业名录影像</strong>，按行业、地域、规模、经营年限多维索引，是企业档案的主体；第二条是<strong>商脉访谈</strong>，以人物为切口记录企业决策者的判断与取舍，尤其关注代际交接、产能迁移、外贸转型这类真实议题；第三条是<strong>行业观察</strong>，由特约作者梳理某一细分领域的供给格局与工艺变化；第四条是<strong>社区共创</strong>，名录商户与在地创作者都可以投稿，把自己的日常拍给同行看。</p>
+        <p>四条主线共享同一套标签体系——行业、地域、工艺、规模、合作类型——这让内容与内容之间可以横跳。一个做五金件的创始人，可能从产线视频跳到同城另一家做表面处理的条目，再跳到一篇讲区域配套半径的行业观察。这种<span class="hy-hl">可横跳的结构，正是内容生态的价值所在</span>，也让我们区别于单纯的信息查询站。</p>
+
+        <h3>四、我们服务谁</h3>
+        <p>第一类是采购与供应链从业者，他们需要在成单前快速判断一家企业的真实产能与作业规范；第二类是招商与产业园区运营方，需要把本地企业讲清楚、讲具体；第三类是求职者与行业新人，希望在投递前了解工作环境的真实样貌；第四类是内容创作者，尤其是长期关注制造业、商贸流通与地方经济的影像作者，这里既有素材土壤，也有稳定分发。我们为这四类人搭了同一套基础设施，只是入口不同。</p>
+        <p>需要特别说明的是边界：黄页仓库入口不提供交易撮合，不代替任何资质审查，也不对企业的履约能力作出担保。我们做的是<b>信息与实景的呈现</b>，判断权始终在使用者手里。这条边界在过去九年里我们从未越过，因为它决定了平台能否长期值得信赖。</p>
+
+        <h3>五、创作社区与持续成长</h3>
+        <p>影像这件事，一个人做不了太多，一群人才能做成规模。我们开放了创作者入驻通道，从选题、拍摄清单、收音规范到剪辑模板都提供公开文档；平台会定期发起企业影像征集，鼓励名录商户用手机记录一次发货、一次盘库、一次设备保养。这些看起来朴素的素材，往往比精修的宣传片更有说服力。</p>
+        <p>社区侧我们坚持两项原则：其一，<strong>真实优先于好看</strong>，不鼓励过度打光与摆拍；其二，<strong>标注清楚</strong>，拍摄时间、地点、企业授权状态都会明示在条目页。九年下来，这套方法让黄页仓库入口在同一领域里保持了相对靠前的口碑，也结识了大量愿意较真的同行。我们仍然认为自己是"仓库"，把东西码整齐、标清楚，比大声吆喝重要得多。</p>
+        <div class="hy-quote">"查得到"是一层，"看得见"是另一层，"愿意让人看见"才是第三层。我们希望黄页仓库入口停在第三层，并且一直停在这里。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 焦点影像 ============ -->
+<section class="hy-section hy-section--tint" id="hyFocus">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Focus Archive</span>
+        <h2 class="hy-sec-title">焦点影像：本周值得先看的四条企业样本</h2>
+        <p class="hy-sec-desc">由编辑团队从近三十条新归档中选出，覆盖制造、仓储、商贸与门店四类现场。</p>
+      </div>
+      <a class="hy-btn hy-btn--ghost hy-btn--sm" href="#hyStream">进入企业名录</a>
+    </div>
+    <div class="hy-hero-videos">
+      <article class="hy-card hy-card--lead">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 640 360" role="img" aria-label="精密五金车间影像封面：成排数控机床与蓝色冷却液">
+            <defs>
+              <linearGradient id="hyF1a" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#123a4c"/><stop offset="1" stop-color="#0a2230"/>
+              </linearGradient>
+              <linearGradient id="hyF1b" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#7fd8c8"/><stop offset="1" stop-color="#2f9b8a"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="360" fill="url(#hyF1a)"/>
+            <g opacity=".5" stroke="#3f7b8f" stroke-width="1.4">
+              <path d="M60 250L300 130M180 300L420 180M300 340L540 220"/>
+              <path d="M60 250h150M180 300h150M300 340h150"/>
+            </g>
+            <g>
+              <rect x="88" y="150" width="150" height="112" rx="6" fill="#1b4d60" stroke="#5fd8bd" stroke-width="2"/>
+              <rect x="104" y="166" width="52" height="40" rx="4" fill="#0e2b38"/>
+              <circle cx="130" cy="186" r="11" fill="none" stroke="#f0a428" stroke-width="3"/>
+              <rect x="168" y="166" width="54" height="9" rx="4" fill="#2f9b8a"/>
+              <rect x="168" y="182" width="42" height="7" rx="3.5" fill="#33657a"/>
+              <rect x="104" y="218" width="118" height="26" rx="4" fill="#0b2531"/>
+              <path d="M112 231h100" stroke="#5fd8bd" stroke-width="2" stroke-dasharray="6 6"/>
+            </g>
+            <g>
+              <rect x="272" y="128" width="150" height="134" rx="6" fill="#1b4d60" stroke="#7fd8c8" stroke-width="2"/>
+              <rect x="288" y="144" width="60" height="48" rx="4" fill="#0e2b38"/>
+              <circle cx="318" cy="168" r="13" fill="none" stroke="#f6c96b" stroke-width="3"/>
+              <rect x="360" y="144" width="48" height="9" rx="4" fill="#2f9b8a"/>
+              <rect x="360" y="160" width="38" height="7" rx="3.5" fill="#33657a"/>
+              <rect x="288" y="204" width="118" height="34" rx="4" fill="#0b2531"/>
+              <path d="M298 221h96" stroke="#7fd8c8" stroke-width="2" stroke-dasharray="4 5"/>
+            </g>
+            <g>
+              <rect x="456" y="170" width="130" height="92" rx="6" fill="#1b4d60" stroke="#5fd8bd" stroke-width="2"/>
+              <rect x="472" y="186" width="44" height="32" rx="4" fill="#0e2b38"/>
+              <circle cx="494" cy="202" r="9" fill="none" stroke="#f0a428" stroke-width="3"/>
+              <rect x="526" y="186" width="44" height="8" rx="4" fill="#2f9b8a"/>
+              <rect x="472" y="228" width="98" height="18" rx="4" fill="#0b2531"/>
+            </g>
+            <rect x="0" y="292" width="640" height="68" fill="#081b24" opacity=".72"/>
+            <path d="M0 292h640" stroke="#2f9b8a" stroke-width="2" opacity=".6"/>
+            <g fill="url(#hyF1b)" opacity=".9">
+              <rect x="88" y="308" width="120" height="8" rx="4"/>
+              <rect x="88" y="326" width="180" height="6" rx="3" opacity=".6"/>
+            </g>
+            <circle cx="560" cy="72" r="26" fill="none" stroke="#f0a428" stroke-width="2" stroke-dasharray="3 7"/>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag hy-tag--amber">本期主推</span><span class="hy-tag">精密五金</span></div>
+          <span class="hy-thumb__time">03:12</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">走进苏州一家做了 28 年的精密五金厂：36 台数控机床与它们的节拍</h3>
+          <p class="hy-card__desc">凌晨四点换刀，六点首件送检，这条产线的节奏被镜头完整记录下来。我们重点拍了三处：刀具管理柜、首件检测台、夜班交接白板，以及车间主任对"为什么不敢接急单"的直白解释。</p>
+          <div class="hy-card__meta">
+            <span class="hy-avatar" style="background:#2f9b8a">陈</span>
+            <span>陈一舟 · 商脉访谈</span>
+            <span>·</span><span>11 月 19 日</span>
+            <span>·</span><span>2.4 万次浏览</span>
+          </div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg>
+              <span data-like-num="1864">1864</span>
+            </button>
+            <button class="hy-act" type="button" data-save aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+              <span>收藏</span>
+            </button>
+            <button class="hy-act" type="button" data-share>分享</button>
+            <button class="hy-act" type="button" data-report>反馈</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="hy-mini-grid">
+        <article class="hy-card hy-mini">
+          <div class="hy-thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="仓储中心影像封面：高货架与穿梭的拣货车">
+              <defs>
+                <linearGradient id="hyF2a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#1d5a6b"/><stop offset="1" stop-color="#0c2a36"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="270" fill="url(#hyF2a)"/>
+              <g stroke="#8fd6c9" stroke-width="2" opacity=".85">
+                <path d="M40 220V60M120 220V60M200 220V60M280 220V60M360 220V60M440 220V60"/>
+                <path d="M40 96h400M40 142h400M40 188h400"/>
+              </g>
+              <g fill="#f0a428" opacity=".92">
+                <rect x="58" y="108" width="44" height="26" rx="3"/>
+                <rect x="138" y="154" width="44" height="26" rx="3"/>
+                <rect x="298" y="108" width="44" height="26" rx="3"/>
+                <rect x="378" y="200" width="44" height="20" rx="3"/>
+              </g>
+              <g fill="#d6e7ee" opacity=".8">
+                <rect x="58" y="154" width="44" height="20" rx="3"/>
+                <rect x="218" y="108" width="44" height="20" rx="3"/>
+                <rect x="218" y="200" width="44" height="20" rx="3"/>
+                <rect x="378" y="154" width="44" height="20" rx="3"/>
+              </g>
+              <path d="M0 224h480" stroke="#2f9b8a" stroke-width="3" opacity=".7"/>
+              <g>
+                <rect x="196" y="216" width="86" height="12" rx="6" fill="#5fd8bd"/>
+                <circle cx="212" cy="236" r="9" fill="#0b2430" stroke="#8fd6c9" stroke-width="3"/>
+                <circle cx="266" cy="236" r="9" fill="#0b2430" stroke="#8fd6c9" stroke-width="3"/>
+              </g>
+            </svg>
+            <div class="hy-thumb__mask"></div>
+            <div class="hy-thumb__tags"><span class="hy-tag hy-tag--teal">仓储实录</span></div>
+            <span class="hy-thumb__time">02:28</span>
+          </div>
+          <div class="hy-card__body">
+            <h3 class="hy-card__title">一万两千个 SKU 的家电配件仓，怎么做到四小时出库</h3>
+            <p class="hy-card__desc">镜头跟拍一次真实拣货：从预分单到封箱装车。</p>
+            <div class="hy-card__meta"><span class="hy-avatar" style="background:#2d6b93">林</span><span>林哲 · 物流观察</span><span>·</span><span>1.1 万次浏览</span></div>
+          </div>
+        </article>
+
+        <article class="hy-card hy-mini">
+          <div class="hy-thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="批发市场影像封面：清晨的粮油批发行与报价牌">
+              <defs>
+                <linearGradient id="hyF3a" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#f6c96b"/><stop offset="1" stop-color="#c9762a"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="270" fill="#0f2a38"/>
+              <rect x="0" y="0" width="480" height="150" fill="url(#hyF3a)" opacity=".28"/>
+              <g fill="#123544">
+                <rect x="34" y="64" width="120" height="90" rx="4"/>
+                <rect x="176" y="52" width="130" height="102" rx="4"/>
+                <rect x="324" y="72" width="120" height="82" rx="4"/>
+              </g>
+              <g fill="#f0a428">
+                <rect x="48" y="80" width="86" height="10" rx="4"/>
+                <rect x="192" y="68" width="90" height="10" rx="4"/>
+                <rect x="338" y="88" width="82" height="10" rx="4"/>
+              </g>
+              <g fill="#d6e7ee" opacity=".72">
+                <rect x="48" y="100" width="60" height="6" rx="3"/>
+                <rect x="192" y="88" width="66" height="6" rx="3"/>
+                <rect x="338" y="108" width="54" height="6" rx="3"/>
+              </g>
+              <g fill="#7a4b1f">
+                <rect x="52" y="160" width="90" height="52" rx="3"/>
+                <rect x="160" y="170" width="80" height="42" rx="3"/>
+                <rect x="256" y="156" width="96" height="56" rx="3"/>
+                <rect x="368" y="166" width="76" height="46" rx="3"/>
+              </g>
+              <path d="M0 224h480" stroke="#f0a428" stroke-width="3" opacity=".6"/>
+              <g fill="#0d2430" opacity=".9">
+                <rect x="60" y="216" width="16" height="26" rx="3"/>
+                <rect x="300" y="212" width="16" height="30" rx="3"/>
+              </g>
+            </svg>
+            <div class="hy-thumb__mask"></div>
+            <div class="hy-thumb__tags"><span class="hy-tag">商贸流通</span></div>
+            <span class="hy-thumb__time">04:05</span>
+          </div>
+          <div class="hy-card__body">
+            <h3 class="hy-card__title">凌晨三点的粮油批发行：报价牌背后的十二个电话</h3>
+            <p class="hy-card__desc">一天的价格怎么定？跟着老板记录整条进货链路。</p>
+            <div class="hy-card__meta"><span class="hy-avatar" style="background:#f0a428;color:#2a1c05">周</span><span>周衡 · 城市探索</span><span>·</span><span>8620 次浏览</span></div>
+          </div>
+        </article>
+
+        <article class="hy-card hy-mini">
+          <div class="hy-thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="老字号门店影像封面：木质柜台与招牌灯箱">
+              <defs>
+                <linearGradient id="hyF4a" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#33465a"/><stop offset="1" stop-color="#151f2b"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="270" fill="url(#hyF4a)"/>
+              <rect x="48" y="40" width="384" height="60" rx="6" fill="#f0a428" opacity=".9"/>
+              <g fill="#2a1c05">
+                <rect x="70" y="58" width="34" height="24" rx="3"/>
+                <rect x="118" y="58" width="34" height="24" rx="3"/>
+                <rect x="166" y="58" width="34" height="24" rx="3"/>
+                <rect x="214" y="58" width="34" height="24" rx="3"/>
+                <rect x="262" y="58" width="34" height="24" rx="3"/>
+                <rect x="310" y="58" width="34" height="24" rx="3"/>
+                <rect x="358" y="58" width="34" height="24" rx="3"/>
+              </g>
+              <rect x="48" y="128" width="384" height="98" rx="6" fill="#5b3a22"/>
+              <rect x="64" y="144" width="352" height="12" rx="6" fill="#8a5d38"/>
+              <g fill="#d6e7ee" opacity=".8">
+                <rect x="72" y="176" width="70" height="34" rx="4"/>
+                <rect x="158" y="176" width="70" height="34" rx="4"/>
+                <rect x="244" y="176" width="70" height="34" rx="4"/>
+                <rect x="330" y="176" width="70" height="34" rx="4"/>
+              </g>
+              <path d="M48 240h384" stroke="#f0a428" stroke-width="2" opacity=".6"/>
+              <circle cx="240" cy="116" r="4" fill="#5fd8bd"/>
+            </svg>
+            <div class="hy-thumb__mask"></div>
+            <div class="hy-thumb__tags"><span class="hy-tag">老字号</span></div>
+            <span class="hy-thumb__time">05:40</span>
+          </div>
+          <div class="hy-card__body">
+            <h3 class="hy-card__title">这家 1956 年开业的五金店，把三千种螺丝钉做成了目录</h3>
+            <p class="hy-card__desc">老柜台、手写账本，以及第三代店主的手艺传承。</p>
+            <div class="hy-card__meta"><span class="hy-avatar" style="background:#5b3a22">苏</span><span>苏晚 · 品牌故事</span><span>·</span><span>1.6 万次浏览</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 专题企划 ============ -->
+<section class="hy-section" id="hyTopics">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Series &amp; Programs</span>
+        <h2 class="hy-sec-title">专题企划：四条正在更新的内容线索</h2>
+        <p class="hy-sec-desc">专题是我们组织长内容的方式，一条线索通常会持续 3 至 6 个月，随企业走访陆续补充。</p>
+      </div>
+    </div>
+    <div class="hy-topics">
+      <a class="hy-topic" href="#hyStream">
+        <svg viewBox="0 0 400 260" aria-hidden="true">
+          <rect width="400" height="260" fill="#123a4c"/>
+          <g stroke="#5fd8bd" stroke-width="1.6" opacity=".65">
+            <path d="M40 200V70M110 200V70M180 200V70M250 200V70M320 200V70"/>
+            <path d="M40 100h300M40 150h300"/>
+          </g>
+          <g fill="#f0a428"><rect x="56" y="112" width="38" height="24" rx="3"/><rect x="126" y="162" width="38" height="24" rx="3"/><rect x="266" y="112" width="38" height="24" rx="3"/></g>
+          <g fill="#c8e0e9" opacity=".7"><rect x="196" y="112" width="38" height="24" rx="3"/><rect x="196" y="162" width="38" height="24" rx="3"/></g>
+          <circle cx="336" cy="66" r="20" fill="none" stroke="#f0a428" stroke-width="2" stroke-dasharray="3 6"/>
+        </svg>
+        <div class="hy-topic__body">
+          <span class="hy-topic__state hy-topic__state--on">更新中 · 18 期</span>
+          <h3>厂区一百天</h3>
+          <p>用一百天的分散走访，拼出一座工业镇真实的供给能力与作息秩序。</p>
+          <div class="hy-topic__foot"><span>影像 42 条</span><span>参与企业 63 家</span></div>
+        </div>
+      </a>
+      <a class="hy-topic" href="#hyCreators">
+        <svg viewBox="0 0 400 260" aria-hidden="true">
+          <rect width="400" height="260" fill="#2a3b52"/>
+          <rect x="52" y="52" width="138" height="156" rx="8" fill="#0f2632"/>
+          <rect x="70" y="72" width="102" height="66" rx="5" fill="#2f9b8a" opacity=".8"/>
+          <rect x="70" y="150" width="76" height="9" rx="4" fill="#c8e0e9" opacity=".8"/>
+          <rect x="70" y="168" width="56" height="7" rx="3.5" fill="#c8e0e9" opacity=".5"/>
+          <rect x="210" y="88" width="138" height="86" rx="8" fill="#0f2632"/>
+          <rect x="226" y="104" width="106" height="40" rx="4" fill="#f0a428" opacity=".85"/>
+          <circle cx="279" cy="196" r="18" fill="#5fd8bd" opacity=".9"/>
+          <path d="M271 196h16M279 188v16" stroke="#0b2430" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <div class="hy-topic__body">
+          <span class="hy-topic__state">连载 · 第 7 篇</span>
+          <h3>商脉访谈录</h3>
+          <p>和八位企业决策者聊接班、迁徙与取舍，镜头只问具体问题。</p>
+          <div class="hy-topic__foot"><span>访谈 8 位</span><span>总时长 214 分钟</span></div>
+        </div>
+      </a>
+      <a class="hy-topic" href="#hyWall">
+        <svg viewBox="0 0 400 260" aria-hidden="true">
+          <rect width="400" height="260" fill="#43372a"/>
+          <g fill="#f0a428" opacity=".9"><rect x="48" y="60" width="96" height="70" rx="4"/><rect x="160" y="60" width="96" height="70" rx="4"/></g>
+          <g fill="#8a5d38"><rect x="48" y="146" width="96" height="70" rx="4"/><rect x="160" y="146" width="96" height="70" rx="4"/></g>
+          <rect x="272" y="60" width="80" height="156" rx="4" fill="#5fd8bd" opacity=".7"/>
+          <path d="M48 130h304" stroke="#c8e0e9" stroke-width="1.4" opacity=".5"/>
+        </svg>
+        <div class="hy-topic__body">
+          <span class="hy-topic__state">征集 · 12 月 20 日截稿</span>
+          <h3>门店的一天</h3>
+          <p>征集名录商户用手机拍下开店到打烊的全过程，入选作品进入影像墙。</p>
+          <div class="hy-topic__foot"><span>已收投稿 316 条</span><span>名额 60 家</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 创作者 ============ -->
+<section class="hy-section hy-section--tint" id="hyCreators">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Creators</span>
+        <h2 class="hy-sec-title">创作者矩阵：把镜头对准车间的人</h2>
+        <p class="hy-sec-desc">点击卡片可查看创作者档案。平台为签约创作者提供拍摄清单、收音规范与剪辑模板，并按条目结算。</p>
+      </div>
+      <a class="hy-btn hy-btn--ghost hy-btn--sm" href="#hyContact">申请入驻</a>
+    </div>
+    <div class="hy-creators">
+      <div class="hy-creator" tabindex="0" role="button" data-creator="陈一舟|商脉访谈与制造现场|长期驻长三角，擅长用长镜头记录产线节奏，作品强调可核验的细节。|186|4.2万">
+        <div class="hy-creator__ava" style="background:linear-gradient(135deg,#2f9b8a,#1d6f62)">陈</div>
+        <h3>陈一舟</h3>
+        <div class="hy-creator__field">商脉访谈 · 制造现场</div>
+        <p class="hy-creator__desc">驻长三角，擅长用长镜头记录产线节拍，坚持标注拍摄日期。</p>
+        <div class="hy-creator__nums"><span><b>186</b>作品</span><span><b>4.2万</b>关注</span></div>
+      </div>
+      <div class="hy-creator" tabindex="0" role="button" data-creator="林哲|仓储与物流动线|跟踪拍摄分拣中心与区域仓，专注出库效率与作业标准化记录。|124|3.1万">
+        <div class="hy-creator__ava" style="background:linear-gradient(135deg,#2d6b93,#194a68)">林</div>
+        <h3>林哲</h3>
+        <div class="hy-creator__field">仓储 · 物流动线</div>
+        <p class="hy-creator__desc">跟踪分拣中心与区域仓，专注出库效率与作业标准化。</p>
+        <div class="hy-creator__nums"><span><b>124</b>作品</span><span><b>3.1万</b>关注</span></div>
+      </div>
+      <div class="hy-creator" tabindex="0" role="button" data-creator="周衡|城市商贸与市井观察|走遍本地批发市场，用镜头记录价格、人情与交易习惯的变化。|142|2.8万">
+        <div class="hy-creator__ava" style="background:linear-gradient(135deg,#f0a428,#c9762a);color:#2a1c05">周</div>
+        <h3>周衡</h3>
+        <div class="hy-creator__field">商贸 · 市井观察</div>
+        <p class="hy-creator__desc">走遍本地批发市场，记录价格、人情与交易习惯的变化。</p>
+        <div class="hy-creator__nums"><span><b>142</b>作品</span><span><b>2.8万</b>关注</span></div>
+      </div>
+      <div class="hy-creator" tabindex="0" role="button" data-creator="苏晚|品牌故事与老字号|关注代际传承与手艺延续，偏爱自然光与现场同期声。|98|2.2万">
+        <div class="hy-creator__ava" style="background:linear-gradient(135deg,#8a5d38,#5b3a22)">苏</div>
+        <h3>苏晚</h3>
+        <div class="hy-creator__field">品牌故事 · 老字号</div>
+        <p class="hy-creator__desc">关注代际传承与手艺延续，偏爱自然光与现场同期声。</p>
+        <div class="hy-creator__nums"><span><b>98</b>作品</span><span><b>2.2万</b>关注</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 企业名录视频流 ============ -->
+<section class="hy-section" id="hyStream">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Directory Stream</span>
+        <h2 class="hy-sec-title">企业名录影像流</h2>
+        <p class="hy-sec-desc">按行业标签筛选。每条影像均对应一个企业条目，含拍摄日期与授权状态，可收藏后离线查阅。</p>
+      </div>
+    </div>
+    <div class="hy-filter" id="hyFilter" role="group" aria-label="行业筛选">
+      <button class="hy-chip is-on" type="button" data-filter="all">全部</button>
+      <button class="hy-chip" type="button" data-filter="制造">制造</button>
+      <button class="hy-chip" type="button" data-filter="仓储">仓储物流</button>
+      <button class="hy-chip" type="button" data-filter="商贸">商贸流通</button>
+      <button class="hy-chip" type="button" data-filter="门店">门店服务</button>
+      <button class="hy-chip" type="button" data-filter="工艺">工艺技艺</button>
+    </div>
+
+    <div class="hy-stream" id="hyStreamGrid">
+      <article class="hy-card" data-cat="制造">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 480 270" role="img" aria-label="注塑车间影像封面：机械臂与成排模具">
+            <rect width="480" height="270" fill="#123544"/>
+            <g stroke="#4a93a8" stroke-width="1.4" opacity=".6"><path d="M0 90h480M0 160h480M0 230h480"/></g>
+            <rect x="44" y="86" width="120" height="88" rx="6" fill="#1b5064" stroke="#5fd8bd" stroke-width="2"/>
+            <rect x="60" y="102" width="46" height="30" rx="3" fill="#0c2a36"/>
+            <rect x="60" y="142" width="88" height="18" rx="3" fill="#0c2a36"/>
+            <rect x="186" y="70" width="120" height="104" rx="6" fill="#1b5064" stroke="#7fd8c8" stroke-width="2"/>
+            <path d="M206 150l24-40 22 22 26-46" stroke="#f0a428" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <rect x="328" y="96" width="110" height="78" rx="6" fill="#1b5064" stroke="#5fd8bd" stroke-width="2"/>
+            <circle cx="383" cy="135" r="20" fill="none" stroke="#f6c96b" stroke-width="3"/>
+            <path d="M0 206h480" stroke="#2f9b8a" stroke-width="3" opacity=".6"/>
+            <g fill="#d6e7ee" opacity=".7"><rect x="44" y="220" width="140" height="7" rx="3.5"/></g>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag hy-tag--teal">制造</span></div>
+          <span class="hy-thumb__time">03:46</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">东莞注塑厂夜班实录：一台机械臂替掉的三道工序</h3>
+          <p class="hy-card__desc">记录模具更换、机械臂取件与质检抽检，附车间班组构成说明。</p>
+          <div class="hy-card__meta"><span class="hy-avatar" style="background:#2f9b8a">陈</span><span>陈一舟</span><span>·</span><span>11-18</span></div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg><span data-like-num="932">932</span></button>
+            <button class="hy-act" type="button" data-save aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>收藏</span></button>
+            <button class="hy-act" type="button" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hy-card" data-cat="仓储">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 480 270" role="img" aria-label="冷链仓库影像封面：白色冷库门与叉车">
+            <defs><linearGradient id="hyS2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d6c85"/><stop offset="1" stop-color="#16303d"/></linearGradient></defs>
+            <rect width="480" height="270" fill="url(#hyS2)"/>
+            <rect x="40" y="52" width="180" height="160" rx="8" fill="#0f2a38" stroke="#9fd0e0" stroke-width="2"/>
+            <rect x="58" y="70" width="144" height="58" rx="5" fill="#c8e6ef" opacity=".85"/>
+            <rect x="58" y="142" width="144" height="52" rx="5" fill="#0b2430"/>
+            <path d="M66 168h128" stroke="#5fd8bd" stroke-width="3" stroke-dasharray="8 6"/>
+            <g>
+              <rect x="252" y="120" width="96" height="60" rx="6" fill="#f0a428"/>
+              <rect x="264" y="132" width="46" height="30" rx="3" fill="#22160a"/>
+              <circle cx="272" cy="192" r="12" fill="#0b2430" stroke="#9fd0e0" stroke-width="3"/>
+              <circle cx="328" cy="192" r="12" fill="#0b2430" stroke="#9fd0e0" stroke-width="3"/>
+            </g>
+            <g fill="#dbeaf0" opacity=".6">
+              <rect x="366" y="70" width="10" height="140" rx="5"/><rect x="392" y="90" width="10" height="120" rx="5"/>
+            </g>
+            <path d="M0 212h480" stroke="#9fd0e0" stroke-width="2" opacity=".5"/>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag hy-tag--teal">仓储</span></div>
+          <span class="hy-thumb__time">02:54</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">零下十八度的分拣线：一座冷链仓的温度与人力账本</h3>
+          <p class="hy-card__desc">跟拍一次凌晨补货，记录温控记录表与轮岗制度。</p>
+          <div class="hy-card__meta"><span class="hy-avatar" style="background:#2d6b93">林</span><span>林哲</span><span>·</span><span>11-16</span></div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg><span data-like-num="741">741</span></button>
+            <button class="hy-act" type="button" data-save aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>收藏</span></button>
+            <button class="hy-act" type="button" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hy-card" data-cat="商贸">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 480 270" role="img" aria-label="建材批发市场影像封面：堆叠管材与手写价签">
+            <rect width="480" height="270" fill="#2b2119"/>
+            <g fill="#8a5d38"><rect x="36" y="150" width="180" height="18" rx="9"/><rect x="36" y="176" width="160" height="18" rx="9"/><rect x="36" y="202" width="180" height="18" rx="9"/></g>
+            <g fill="#f0a428"><rect x="248" y="80" width="180" height="26" rx="6"/><rect x="248" y="118" width="140" height="26" rx="6"/></g>
+            <g fill="#c8e0e9" opacity=".7">
+              <rect x="36" y="60" width="120" height="10" rx="5"/><rect x="36" y="84" width="90" height="8" rx="4"/>
+            </g>
+            <rect x="252" y="170" width="176" height="70" rx="6" fill="#123544"/>
+            <g fill="#5fd8bd"><rect x="266" y="186" width="60" height="8" rx="4"/><rect x="266" y="204" width="100" height="8" rx="4"/><rect x="266" y="222" width="44" height="8" rx="4"/></g>
+            <path d="M0 240h480" stroke="#8a5d38" stroke-width="3"/>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag">商贸</span></div>
+          <span class="hy-thumb__time">04:20</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">管材批发一条街：从手写价签到电子台账的十年</h3>
+          <p class="hy-card__desc">走访三家老店，看小批发商如何把库存搬进表格。</p>
+          <div class="hy-card__meta"><span class="hy-avatar" style="background:#f0a428;color:#2a1c05">周</span><span>周衡</span><span>·</span><span>11-14</span></div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg><span data-like-num="615">615</span></button>
+            <button class="hy-act" type="button" data-save aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>收藏</span></button>
+            <button class="hy-act" type="button" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hy-card" data-cat="门店">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 480 270" role="img" aria-label="社区家电维修店影像封面：工作台与拆卸的电机">
+            <rect width="480" height="270" fill="#1b3a3a"/>
+            <rect x="30" y="150" width="420" height="70" rx="8" fill="#5b3a22"/>
+            <rect x="30" y="142" width="420" height="12" rx="6" fill="#8a5d38"/>
+            <g fill="#c8e0e9" opacity=".8">
+              <circle cx="110" cy="110" r="34" fill="none" stroke="#9fd0e0" stroke-width="5"/>
+              <circle cx="110" cy="110" r="12" fill="#f0a428"/>
+              <rect x="190" y="84" width="70" height="46" rx="6" fill="#123544"/>
+              <rect x="286" y="92" width="50" height="30" rx="4" fill="#2f9b8a"/>
+              <path d="M356 118l30-28 26 28z" fill="#f6c96b"/>
+            </g>
+            <g stroke="#9fd0e0" stroke-width="2" opacity=".5"><path d="M60 236h360"/></g>
+            <g fill="#0f2a38"><rect x="70" y="60" width="12" height="70" rx="6"/><rect x="410" y="70" width="12" height="60" rx="6"/></g>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag">门店</span></div>
+          <span class="hy-thumb__time">06:08</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">开了十九年的家电维修店：一张价目表与它的回头客</h3>
+          <p class="hy-card__desc">拆一台老洗衣机，讲清楚为什么他坚持当面报价。</p>
+          <div class="hy-card__meta"><span class="hy-avatar" style="background:#8a5d38">苏</span><span>苏晚</span><span>·</span><span>11-12</span></div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg><span data-like-num="1108">1108</span></button>
+            <button class="hy-act" type="button" data-save aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>收藏</span></button>
+            <button class="hy-act" type="button" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hy-card" data-cat="工艺">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 480 270" role="img" aria-label="木器工坊影像封面：手工刨木与木屑">
+            <defs><linearGradient id="hyS5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a4a2a"/><stop offset="1" stop-color="#33210f"/></linearGradient></defs>
+            <rect width="480" height="270" fill="url(#hyS5)"/>
+            <rect x="40" y="176" width="400" height="26" rx="6" fill="#8a5d38"/>
+            <g fill="#c99a5e">
+              <rect x="70" y="120" width="150" height="44" rx="5"/>
+              <rect x="250" y="136" width="120" height="36" rx="5" opacity=".85"/>
+            </g>
+            <g stroke="#f0d3a6" stroke-width="2" opacity=".7">
+              <path d="M80 132h130M80 146h100M260 148h100"/>
+            </g>
+            <g fill="#f0d3a6" opacity=".6">
+              <circle cx="404" cy="80" r="4"/><circle cx="372" cy="96" r="3"/><circle cx="420" cy="112" r="3"/>
+              <circle cx="340" cy="72" r="2.6"/><circle cx="300" cy="94" r="2.2"/>
+            </g>
+            <path d="M60 210l60-40 34 24 50-34" stroke="#123544" stroke-width="6" fill="none" stroke-linecap="round" opacity=".5"/>
+            <circle cx="120" cy="70" r="22" fill="none" stroke="#f6c96b" stroke-width="2" stroke-dasharray="3 6"/>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag hy-tag--amber">工艺</span></div>
+          <span class="hy-thumb__time">05:12</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">木器工坊的一天：从选料到上蜡，六道手工工序全记录</h3>
+          <p class="hy-card__desc">老师傅演示刨木角度，顺带讲了讲为什么机器做不出手感。</p>
+          <div class="hy-card__meta"><span class="hy-avatar" style="background:#2f9b8a">陈</span><span>陈一舟</span><span>·</span><span>11-10</span></div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg><span data-like-num="487">487</span></button>
+            <button class="hy-act" type="button" data-save aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>收藏</span></button>
+            <button class="hy-act" type="button" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="hy-card" data-cat="制造">
+        <div class="hy-thumb">
+          <svg viewBox="0 0 480 270" role="img" aria-label="电子装配车间影像封面：流水线与检测屏幕">
+            <rect width="480" height="270" fill="#102b3a"/>
+            <rect x="30" y="150" width="420" height="46" rx="8" fill="#1b5064"/>
+            <g fill="#0c2a36"><rect x="52" y="162" width="60" height="22" rx="3"/><rect x="132" y="162" width="60" height="22" rx="3"/><rect x="212" y="162" width="60" height="22" rx="3"/><rect x="292" y="162" width="60" height="22" rx="3"/><rect x="372" y="162" width="56" height="22" rx="3"/></g>
+            <g fill="#5fd8bd"><circle cx="82" cy="140" r="6"/><circle cx="162" cy="140" r="6"/><circle cx="242" cy="140" r="6"/><circle cx="322" cy="140" r="6"/><circle cx="402" cy="140" r="6"/></g>
+            <rect x="120" y="52" width="240" height="66" rx="8" fill="#0f2a38" stroke="#4a93a8" stroke-width="2"/>
+            <g fill="#f0a428"><rect x="138" y="70" width="90" height="8" rx="4"/><rect x="138" y="88" width="60" height="8" rx="4"/></g>
+            <g fill="#7fd8c8" opacity=".8"><rect x="246" y="70" width="96" height="8" rx="4"/><rect x="246" y="88" width="70" height="8" rx="4"/></g>
+            <path d="M0 210h480" stroke="#2f9b8a" stroke-width="2" opacity=".5"/>
+          </svg>
+          <div class="hy-thumb__mask"></div>
+          <div class="hy-thumb__tags"><span class="hy-tag hy-tag--teal">制造</span></div>
+          <span class="hy-thumb__time">03:02</span>
+          <span class="hy-thumb__play" aria-hidden="true"></span>
+        </div>
+        <div class="hy-card__body">
+          <h3 class="hy-card__title">小批量电子装配线：二十人班组怎么接住定制订单</h3>
+          <p class="hy-card__desc">看排产白板与检测工位，理解柔性生产的时间成本。</p>
+          <div class="hy-card__meta"><span class="hy-avatar" style="background:#2d6b93">林</span><span>林哲</span><span>·</span><span>11-08</span></div>
+          <div class="hy-card__actions">
+            <button class="hy-act" type="button" data-like aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg><span data-like-num="803">803</span></button>
+            <button class="hy-act" type="button" data-save aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>收藏</span></button>
+            <button class="hy-act" type="button" data-share>分享</button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="hy-empty" id="hyEmpty">该分类下暂无影像，试试其他标签。</p>
+  </div>
+</section>
+
+<!-- ============ 影像墙 ============ -->
+<section class="hy-section hy-section--tint" id="hyWall">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Image Wall</span>
+        <h2 class="hy-sec-title">影像墙：商户与创作者共同提交的现场切片</h2>
+        <p class="hy-sec-desc">本期以"门店的一天"为主题，共展出九组画面，点击可查看对应企业条目。</p>
+      </div>
+      <a class="hy-btn hy-btn--ghost hy-btn--sm" href="#hyContact">上传作品</a>
+    </div>
+    <div class="hy-wall">
+      <div class="hy-wall__item hy-wall__item--lg" data-title="南京一家印刷厂的开机首件" tabindex="0" role="button">
+        <svg viewBox="0 0 400 400" role="img" aria-label="印刷厂开机首件现场">
+          <rect width="400" height="400" fill="#17394a"/>
+          <rect x="40" y="150" width="320" height="130" rx="10" fill="#0f2a38" stroke="#4a93a8" stroke-width="2"/>
+          <g fill="#c8e0e9" opacity=".9"><rect x="62" y="170" width="120" height="90" rx="4"/><rect x="200" y="170" width="140" height="16" rx="5"/><rect x="200" y="198" width="100" height="12" rx="4"/></g>
+          <g fill="#f0a428"><rect x="200" y="222" width="70" height="12" rx="4"/><rect x="200" y="244" width="130" height="8" rx="4" opacity=".7"/></g>
+          <circle cx="320" cy="90" r="40" fill="none" stroke="#5fd8bd" stroke-width="3"/>
+          <path d="M304 90l12 12 22-26" fill="none" stroke="#5fd8bd" stroke-width="4" stroke-linecap="round"/>
+          <g stroke="#2f9b8a" stroke-width="2" opacity=".5"><path d="M40 320h320M40 344h220"/></g>
+        </svg>
+        <div class="hy-wall__cap">南京 · 印刷厂开机首件</div>
+      </div>
+      <div class="hy-wall__item hy-wall__item--md" data-title="佛山陶瓷展厅的样板墙" tabindex="0" role="button">
+        <svg viewBox="0 0 400 200" role="img" aria-label="陶瓷展厅样板墙">
+          <rect width="400" height="200" fill="#3d3a34"/>
+          <g fill="#c9b79a"><rect x="30" y="30" width="80" height="60" rx="3"/><rect x="120" y="30" width="80" height="60" rx="3"/><rect x="210" y="30" width="80" height="60" rx="3"/><rect x="300" y="30" width="70" height="60" rx="3"/></g>
+          <g fill="#8a7a63"><rect x="30" y="102" width="80" height="60" rx="3"/><rect x="120" y="102" width="80" height="60" rx="3"/><rect x="210" y="102" width="80" height="60" rx="3"/><rect x="300" y="102" width="70" height="60" rx="3"/></g>
+          <rect x="0" y="172" width="400" height="28" fill="#151f26"/>
+        </svg>
+        <div class="hy-wall__cap">佛山 · 陶瓷样板墙</div>
+      </div>
+      <div class="hy-wall__item" data-title="肠粉店清晨的蒸箱" tabindex="0" role="button">
+        <svg viewBox="0 0 200 200" role="img" aria-label="肠粉店清晨蒸箱">
+          <rect width="200" height="200" fill="#4a2f1c"/>
+          <rect x="30" y="70" width="140" height="90" rx="8" fill="#8a5d38"/>
+          <g fill="#f0d3a6"><rect x="46" y="84" width="108" height="10" rx="5"/><rect x="46" y="104" width="108" height="10" rx="5"/><rect x="46" y="124" width="108" height="10" rx="5"/></g>
+          <g fill="#e8f3f6" opacity=".55"><circle cx="70" cy="46" r="12"/><circle cx="100" cy="34" r="16"/><circle cx="132" cy="46" r="12"/></g>
+        </svg>
+        <div class="hy-wall__cap">广州 · 肠粉蒸箱</div>
+      </div>
+      <div class="hy-wall__item" data-title="五金店的手写价目牌" tabindex="0" role="button">
+        <svg viewBox="0 0 200 200" role="img" aria-label="五金店手写价目牌">
+          <rect width="200" height="200" fill="#233b2f"/>
+          <rect x="24" y="34" width="152" height="132" rx="8" fill="#f0e6cf"/>
+          <g stroke="#5b4a33" stroke-width="3" opacity=".8"><path d="M44 68h112M44 96h88M44 124h108M44 148h64"/></g>
+          <circle cx="148" cy="146" r="16" fill="none" stroke="#c9762a" stroke-width="3"/>
+        </svg>
+        <div class="hy-wall__cap">常州 · 手写价目牌</div>
+      </div>
+      <div class="hy-wall__item" data-title="皮革工坊的裁料台" tabindex="0" role="button">
+        <svg viewBox="0 0 200 200" role="img" aria-label="皮革工坊裁料台">
+          <rect width="200" height="200" fill="#3a2a1e"/>
+          <rect x="0" y="120" width="200" height="80" fill="#6a4a2a"/>
+          <path d="M40 118c20-40 60-46 90-20 18 16 12 40-16 40H58c-16 0-24-10-18-20z" fill="#a9764a"/>
+          <g stroke="#e8d3b0" stroke-width="2" stroke-dasharray="5 5" opacity=".8"><path d="M58 104c18-22 50-24 70-6"/></g>
+          <g fill="#c8e0e9" opacity=".7"><circle cx="156" cy="46" r="6"/><circle cx="132" cy="58" r="4"/></g>
+        </svg>
+        <div class="hy-wall__cap">温州 · 皮革裁料台</div>
+      </div>
+      <div class="hy-wall__item hy-wall__item--md" data-title="区域仓的叉车与托盘" tabindex="0" role="button">
+        <svg viewBox="0 0 400 200" role="img" aria-label="区域仓叉车与托盘">
+          <rect width="400" height="200" fill="#1b3a4a"/>
+          <g stroke="#5fd8bd" stroke-width="2" opacity=".6"><path d="M20 100h360M20 150h360"/></g>
+          <g fill="#8a5d38"><rect x="40" y="130" width="100" height="18" rx="4"/><rect x="150" y="112" width="90" height="16" rx="4"/><rect x="260" y="130" width="80" height="18" rx="4"/></g>
+          <g fill="#f0a428"><rect x="196" y="140" width="70" height="34" rx="5"/><rect x="208" y="148" width="26" height="18" rx="3" fill="#22160a"/></g>
+          <circle cx="210" cy="180" r="10" fill="#0b2430" stroke="#9fd0e0" stroke-width="3"/>
+          <circle cx="252" cy="180" r="10" fill="#0b2430" stroke="#9fd0e0" stroke-width="3"/>
+        </svg>
+        <div class="hy-wall__cap">无锡 · 叉车与托盘</div>
+      </div>
+      <div class="hy-wall__item" data-title="茶厂萎凋车间的竹匾" tabindex="0" role="button">
+        <svg viewBox="0 0 200 200" role="img" aria-label="茶厂萎凋车间竹匾">
+          <rect width="200" height="200" fill="#2d3b2a"/>
+          <g fill="#a98650"><circle cx="70" cy="80" r="42"/><circle cx="140" cy="132" r="34"/></g>
+          <g fill="#7c9a5a" opacity=".85"><circle cx="70" cy="80" r="26"/><circle cx="140" cy="132" r="20"/></g>
+          <g stroke="#e8d3b0" stroke-width="1.6" opacity=".5"><path d="M30 80h80M70 40v80M108 132h64M140 100v64"/></g>
+        </svg>
+        <div class="hy-wall__cap">武夷山 · 萎凋竹匾</div>
+      </div>
+      <div class="hy-wall__item" data-title="汽配城的货架通道" tabindex="0" role="button">
+        <svg viewBox="0 0 200 200" role="img" aria-label="汽配城货架通道">
+          <rect width="200" height="200" fill="#1b2c3a"/>
+          <g stroke="#7fa8bd" stroke-width="2" opacity=".7"><path d="M20 50v140M70 40v150M120 40v150M170 50v140M20 70h150M20 120h150"/></g>
+          <g fill="#f0a428"><rect x="32" y="80" width="26" height="32" rx="3"/><rect x="82" y="130" width="26" height="32" rx="3"/><rect x="132" y="80" width="26" height="32" rx="3"/></g>
+          <g fill="#9fd0e0" opacity=".7"><rect x="32" y="134" width="26" height="20" rx="3"/><rect x="132" y="134" width="26" height="20" rx="3"/></g>
+        </svg>
+        <div class="hy-wall__cap">郑州 · 汽配货架</div>
+      </div>
+      <div class="hy-wall__item" data-title="印刷厂晾干的成品页" tabindex="0" role="button">
+        <svg viewBox="0 0 200 200" role="img" aria-label="印刷厂晾干成品页">
+          <rect width="200" height="200" fill="#3a3340"/>
+          <g fill="#e8edf2"><rect x="30" y="40" width="60" height="120" rx="3" transform="rotate(-6 60 100)"/><rect x="100" y="36" width="60" height="124" rx="3" transform="rotate(4 130 98)"/></g>
+          <g stroke="#8a9aa8" stroke-width="2" opacity=".7"><path d="M42 70h36M42 86h36M42 102h26"/><path d="M112 68h36M112 84h36M112 100h26"/></g>
+          <circle cx="166" cy="166" r="16" fill="none" stroke="#f0a428" stroke-width="3"/>
+        </svg>
+        <div class="hy-wall__cap">南京 · 成品晾干</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 用户评价 ============ -->
+<section class="hy-section" id="hyReviews">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Community Voice</span>
+        <h2 class="hy-sec-title">用户怎么说</h2>
+        <p class="hy-sec-desc">来自采购、招商、求职与创作四类使用者的真实反馈，内容经授权展示。</p>
+      </div>
+    </div>
+    <div class="hy-reviews">
+      <div class="hy-review">
+        <div class="hy-review__top">
+          <span class="hy-avatar" style="background:#2f9b8a">何</span>
+          <span class="hy-review__who"><b>何工</b><span>供应链经理 · 苏州</span></span>
+          <span class="hy-stars">★★★★★</span>
+        </div>
+        <p>出差前先在这里看一遍车间影像，成单前的判断效率提高很多。尤其喜欢标注拍摄日期的做法，比宣传片有用。</p>
+      </div>
+      <div class="hy-review">
+        <div class="hy-review__top">
+          <span class="hy-avatar" style="background:#2d6b93">吴</span>
+          <span class="hy-review__who"><b>吴女士</b><span>园区招商 · 合肥</span></span>
+          <span class="hy-stars">★★★★★</span>
+        </div>
+        <p>把本地企业讲清楚是招商最难的部分，这里的影像可以直接拿去做路演素材，省了很大一块拍摄预算。</p>
+      </div>
+      <div class="hy-review">
+        <div class="hy-review__top">
+          <span class="hy-avatar" style="background:#f0a428;color:#2a1c05">郑</span>
+          <span class="hy-review__who"><b>郑小满</b><span>应届毕业生 · 武汉</span></span>
+          <span class="hy-stars">★★★★☆</span>
+        </div>
+        <p>投简历之前先看看工作环境长什么样，心里有底。希望以后能补充更多关于住宿和通勤的信息。</p>
+      </div>
+      <div class="hy-review">
+        <div class="hy-review__top">
+          <span class="hy-avatar" style="background:#8a5d38">罗</span>
+          <span class="hy-review__who"><b>罗师傅</b><span>名录商户 · 佛山</span></span>
+          <span class="hy-stars">★★★★★</span>
+        </div>
+        <p>一开始担心拍出来不好看，后来发现真实反而更招客户。上个月有三个新客户说是看了视频找过来的。</p>
+      </div>
+      <div class="hy-review">
+        <div class="hy-review__top">
+          <span class="hy-avatar" style="background:#5b3a22">方</span>
+          <span class="hy-review__who"><b>方屿</b><span>纪录片创作者 · 成都</span></span>
+          <span class="hy-stars">★★★★★</span>
+        </div>
+        <p>拍摄清单和收音规范写得非常具体，接活之前看一遍基本不会踩坑。结算也准时，合作起来很舒服。</p>
+      </div>
+      <div class="hy-review">
+        <div class="hy-review__top">
+          <span class="hy-avatar" style="background:#3d6c85">韩</span>
+          <span class="hy-review__who"><b>韩经理</b><span>外贸采购 · 宁波</span></span>
+          <span class="hy-stars">★★★★☆</span>
+        </div>
+        <p>条目里的资质索引很省事，影像能看到产线真实密度。如果是海外客户，可能还需要双语标注。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 动态 + 灵感 ============ -->
+<section class="hy-section hy-section--tint" id="hyNews">
+  <div class="hy-wrap">
+    <div class="hy-sec-head">
+      <div>
+        <span class="hy-eyebrow">Newsroom</span>
+        <h2 class="hy-sec-title">企业动态与创作灵感</h2>
+        <p class="hy-sec-desc">左侧为官方发布，右侧为给创作者的实用建议。两栏内容每周更新一次。</p>
+      </div>
+    </div>
+    <div class="hy-split">
+      <div class="hy-news">
+        <div class="hy-news__item">
+          <span class="hy-news__date">11 / 19</span>
+          <div class="hy-news__txt">
+            <h3>长三角精密制造企业档案新增 128 家</h3>
+            <p>覆盖五金、模具、电子装配三类现场，全部附厂区实拍与资质索引，可直接在地域筛选中调用。</p>
+          </div>
+        </div>
+        <div class="hy-news__item">
+          <span class="hy-news__date">11 / 18</span>
+          <div class="hy-news__txt">
+            <h3>《商脉访谈》第 24 期上线：一家三十年老厂的接班记录</h3>
+            <p>拍摄历时两个月，记录两代经营者关于产能迁移与客户结构的分歧与共识。</p>
+          </div>
+        </div>
+        <div class="hy-news__item">
+          <span class="hy-news__date">11 / 17</span>
+          <div class="hy-news__txt">
+            <h3>2026 年度企业影像征集开放报名</h3>
+            <p>名录商户可提交厂区、门店与仓储素材，入选作品进入影像墙并获得首页推荐位置。</p>
+          </div>
+        </div>
+        <div class="hy-news__item">
+          <span class="hy-news__date">11 / 15</span>
+          <div class="hy-news__txt">
+            <h3>行业热度榜上线：商贸流通分类共 60 条企业索引</h3>
+            <p>榜单按近三十日条目浏览与收藏量排序，每月重置，避免长期固化。</p>
+          </div>
+        </div>
+        <div class="hy-news__item">
+          <span class="hy-news__date">11 / 10</span>
+          <div class="hy-news__txt">
+            <h3>平台新增四位签约创作者，覆盖仓储与工艺题材</h3>
+            <p>本轮入驻创作者已完成拍摄规范培训，可承接华东与华南地区的企业走访任务。</p>
+          </div>
+        </div>
+      </div>
+      <div class="hy-idea">
+        <h3>创作灵感 · 本周三条</h3>
+        <p>给准备拍摄企业素材的创作者，来自编辑部的经验整理。</p>
+        <div class="hy-idea__list">
+          <div class="hy-idea__row"><b>01</b><span>先拍"手"，再拍"脸"。作业中的手部特写最能说明工艺水平。</span></div>
+          <div class="hy-idea__row"><b>02</b><span>把价目表、排产板、交接白板各拍一个完整镜头，它们是企业的"书面自述"。</span></div>
+          <div class="hy-idea__row"><b>03</b><span>收一段完整的现场同期声，机器的底噪比配乐更能建立可信度。</span></div>
+        </div>
+        <button class="hy-btn" type="button" id="hyIdeaBtn">获取更多创作建议</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="hy-section" id="hyFaq">
+  <div class="hy-wrap">
+    <div class="hy-sec-head" style="justify-content:center;text-align:center">
+      <div>
+        <span class="hy-eyebrow">Help Center</span>
+        <h2 class="hy-sec-title">常见问题</h2>
+        <p class="hy-sec-desc" style="margin-left:auto;margin-right:auto">关于企业条目、影像授权与创作者合作的常见疑问，点击展开查看。</p>
+      </div>
+    </div>
+    <div class="hy-faq">
+      <details open>
+        <summary>黄页仓库入口的企业信息从哪里来，可信度如何保证？</summary>
+        <div class="hy-faq__ans">企业条目由企业授权提交营业执照与场地信息，平台交叉比对公开登记数据与园区侧证明；影像部分由签约创作者实地拍摄，并在条目页标注拍摄日期。我们不代替任何资质审查，也不对企业履约能力作出担保，但会明确标注信息来源与采集时间，方便使用者自行判断。</div>
+      </details>
+      <details>
+        <summary>名录商户如何提交自己的企业档案？</summary>
+        <div class="hy-faq__ans">在页面底部进入联系区域，选择"提交企业档案"即可填写表单，需要提供企业名称、主营范围、联系人、所在园区或地址。初审通过后，我们会安排在地创作者上门拍摄，拍摄通常需要半天时间，完成后约七个工作日生成条目。</div>
+      </details>
+      <details>
+        <summary>影像素材的授权范围是怎样的？</summary>
+        <div class="hy-faq__ans">企业影像的著作权归拍摄创作者所有，平台获得展示与分发授权，企业获得自身条目的非独占使用许可。任何第三方如需转载或商用，须通过联系表单提交申请，我们会协助对接创作者。平台明确拒绝未经授权搬运与二次剪辑。</div>
+      </details>
+      <details>
+        <summary>创作者入驻需要满足什么条件？</summary>
+        <div class="hy-faq__ans">需要具备基础的视频拍摄与收音能力，自备设备，能够按统一分镜规范完成四类场景的拍摄。入驻流程包括资料提交、规范学习、试拍评估三个环节。试拍通过后即可接收平台派单，按条目结算，结算周期为月度。</div>
+      </details>
+      <details>
+        <summary>为什么有些条目只有文字信息，没有影像？</summary>
+        <div class="hy-faq__ans">影像采集依赖在地创作者与企业的双向时间配合，部分偏远地区或生产节奏较紧的企业暂时只完成文字核验。这类条目会在页面上明确标注"影像待补"，你可以通过收藏功能关注，影像上线后会有站内提醒。</div>
+      </details>
+      <details>
+        <summary>搜索找不到某家企业，怎么办？</summary>
+        <div class="hy-faq__ans">目前平台已归档条目超过一万两千条，但覆盖仍有盲区。你可以通过联系表单提交企业名称与所在城市，编辑部会评估是否纳入采集计划。名录商户也可以主动提交档案，走的是同一套审核流程。</div>
+      </details>
+      <details>
+        <summary>平台是否收取费用？</summary>
+        <div class="hy-faq__ans">基础浏览、搜索与收藏功能长期免费。企业如需加急拍摄、专题定制或多语种标注，可选择付费服务，具体项目与价格在合作沟通中确认。我们不提供排名买卖，热度榜按真实互动数据生成。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 联系 ============ -->
+<section class="hy-section" id="hyContact">
+  <div class="hy-wrap">
+    <div class="hy-cta">
+      <div>
+        <h2>让你的企业，也被认真看一次</h2>
+        <p>无论你是想提交企业档案的名录商户，还是希望加入拍摄计划的创作者，或只是对某条影像有疑问，都可以从这里开始。我们通常在两个工作日内回复。</p>
+      </div>
+      <div class="hy-cta__btns">
+        <button class="hy-btn" type="button" data-open="entry">提交企业档案</button>
+        <button class="hy-btn hy-btn--ghost" type="button" data-open="creator" style="border-color:rgba(255,255,255,.4);color:#e8f2f6">申请创作者入驻</button>
+        <button class="hy-btn hy-btn--ghost" type="button" data-share style="border-color:rgba(255,255,255,.4);color:#e8f2f6">分享本站</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 页脚 ============ -->
+<footer class="hy-footer">
+  <div class="hy-wrap">
+    <div class="hy-footer__grid">
+      <div>
+        <div class="hy-footer__brand">
+          <span class="hy-brand__mark">黄</span>
+          <span><strong>黄页仓库入口</strong><span>Directory Video Archive</span></span>
+        </div>
+        <p>深耕企业名录与商业影像记录的垂直领域平台，以原创高清影像为索引，为企业、创作者与采购方搭建可信的内容生态。官网持续运营中，欢迎监督与反馈。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#hyFocus">焦点影像</a></li>
+          <li><a href="#hyTopics">专题企划</a></li>
+          <li><a href="#hyStream">企业名录</a></li>
+          <li><a href="#hyWall">影像墙</a></li>
+          <li><a href="#hyCreators">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于与帮助</h4>
+        <ul>
+          <li><a href="#hyAbout">平台定位解析</a></li>
+          <li><a href="#hyNews">企业动态</a></li>
+          <li><a href="#hyFaq">常见问题</a></li>
+          <li><a href="#hyReviews">用户反馈</a></li>
+          <li><a href="#hyContact">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>联系方式</h4>
+        <p>合作与投稿：partner@huangyecangku.example</p>
+        <p>创作者事务：creator@huangyecangku.example</p>
+        <p>工作时段：周一至周五 09:30 – 18:00</p>
+        <p>通讯地址：华东区企业影像档案中心（详细地址以邮件确认为准）</p>
+      </div>
+    </div>
+    <div class="hy-footer__bottom">
+      <span>© 2017–2026 黄页仓库入口 官方网站 · 版权所有 · 内容未经授权禁止转载</span>
+      <span>企业名录与影像档案持续归档中 · 更新于 2026 年 11 月</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ 浮层组件 ============ -->
+<div class="hy-toast" id="hyToast" role="status" aria-live="polite"></div>
+
+<div class="hy-modal" id="hyModal" role="dialog" aria-modal="true" aria-labelledby="hyModalTitle">
+  <div class="hy-modal__box">
+    <button class="hy-modal__close" type="button" id="hyModalClose" aria-label="关闭弹窗">✕</button>
+    <h3 id="hyModalTitle">提交信息</h3>
+    <p id="hyModalDesc">请填写以下内容，我们将尽快与您联系。</p>
+    <form id="hyModalForm">
+      <div class="hy-field">
+        <label for="hyFieldName">称呼 / 企业名称</label>
+        <input id="hyFieldName" name="name" type="text" placeholder="例如：某某精密制造有限公司" required>
+      </div>
+      <div class="hy-field">
+        <label for="hyFieldContact">联系方式</label>
+        <input id="hyFieldContact" name="contact" type="text" placeholder="手机号或邮箱" required>
+      </div>
+      <div class="hy-field" id="hyFieldMsgWrap">
+        <label for="hyFieldMsg">补充说明</label>
+        <textarea id="hyFieldMsg" name="msg" placeholder="所在城市、主营范围、期望拍摄时间等"></textarea>
+      </div>
+      <button class="hy-btn" type="submit">确认提交</button>
+    </form>
+  </div>
+</div>
+
+<button class="hy-top" id="hyTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- 移动端导航 ---------- */
+  var nav = document.getElementById('hyNav');
+  var toggle = document.getElementById('hyToggle');
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? '✕' : '☰';
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && nav.classList.contains('is-open')){
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded','false');
+        toggle.textContent = '☰';
+      }
+    });
+  }
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById('hyToast');
+  var toastTimer = null;
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('is-on'); }, 2200);
+  }
+
+  /* ---------- 公告轮播 ---------- */
+  var noticeItems = document.querySelectorAll('#hyNoticeList .hy-notice__item');
+  if(noticeItems.length > 1){
+    var ni = 0;
+    setInterval(function(){
+      noticeItems[ni].classList.remove('is-on');
+      ni = (ni + 1) % noticeItems.length;
+      noticeItems[ni].classList.add('is-on');
+    }, 4200);
+  }
+
+  /* ---------- 数字滚动 ---------- */
+  var counters = document.querySelectorAll('[data-count]');
+  counters.forEach(function(el){
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    var start = null;
+    var dur = 1200;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var val = Math.floor(target * (1 - Math.pow(1 - p, 3)));
+      el.textContent = val.toLocaleString('zh-CN');
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('zh-CN');
+    }
+    requestAnimationFrame(step);
+  });
+
+  /* ---------- 搜索反馈 ---------- */
+  var search = document.getElementById('hySearch');
+  var hint = document.getElementById('hySearchHint');
+  var searchMap = [
+    {k:'五金', d:'精密五金 · 苏州条目 12 条'},
+    {k:'仓储', d:'仓储物流 · 冷链与分拣 26 条'},
+    {k:'批发', d:'商贸流通 · 批发市场 41 条'},
+    {k:'门店', d:'门店服务 · 老字号与维修 33 条'},
+    {k:'工艺', d:'工艺技艺 · 木器、皮革、印刷 18 条'},
+    {k:'创作者', d:'创作者矩阵 · 4 位签约作者'},
+    {k:'专题', d:'专题企划 · 3 条连载线索'}
+  ];
+  if(search && hint){
+    search.addEventListener('input', function(){
+      var v = search.value.trim();
+      if(!v){
+        hint.classList.remove('is-on');
+        hint.innerHTML = '';
+        return;
+      }
+      var hits = searchMap.filter(function(item){ return item.k.indexOf(v) > -1 || v.indexOf(item.k) > -1; });
+      hint.innerHTML = hits.length
+        ? hits.map(function(h){ return '<div style="padding:4px 2px">找到 <b>' + h.k + '</b> · ' + h.d + '</div>'; }).join('')
+        : '未检索到「' + escapeHtml(v) + '」，可尝试：五金、仓储、批发、门店、工艺';
+      hint.classList.add('is-on');
+    });
+    search.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && search.value.trim()){
+        e.preventDefault();
+        showToast('正在检索：' + search.value.trim());
+        var target = document.getElementById('hyStream');
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.hy-search')) hint.classList.remove('is-on');
+    });
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  /* ---------- 点赞 / 收藏 ---------- */
+  document.querySelectorAll('[data-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var numEl = btn.querySelector('[data-like-num]');
+      var liked = btn.classList.toggle('is-liked');
+      btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+      if(numEl){
+        var n = parseInt(numEl.textContent.replace(/,/g,''), 10) || 0;
+        n = liked ? n + 1 : Math.max(0, n - 1);
+        numEl.textContent = n.toLocaleString('zh-CN');
+      }
+      showToast(liked ? '已点赞，感谢你的认可' : '已取消点赞');
+    });
+  });
+  document.querySelectorAll('[data-save]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var saved = btn.classList.toggle('is-saved');
+      btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+      var label = btn.querySelector('span');
+      if(label) label.textContent = saved ? '已收藏' : '收藏';
+      showToast(saved ? '已加入收藏夹' : '已移出收藏夹');
+    });
+  });
+
+  /* ---------- 分享 ---------- */
+  var shareHtml = '<div class="hy-share">' +
+    '<button type="button" data-share-way="微信">微信</button>' +
+    '<button type="button" data-share-way="微博">微博</button>' +
+    '<button type="button" data-share-way="QQ">QQ</button>' +
+    '<button type="button" data-share-way="复制链接" style="flex:1 1 100%">复制页面链接</button>' +
+    '</div>';
+
+  document.addEventListener('click', function(e){
+    var shareBtn = e.target.closest('[data-share]');
+    if(!shareBtn) return;
+    e.preventDefault();
+    openModal('分享给同行', '选择分享渠道，把这份企业影像档案递给需要的人。', shareHtml, true);
+  });
+
+  document.addEventListener('click', function(e){
+    var way = e.target.getAttribute && e.target.getAttribute('data-share-way');
+    if(!way) return;
+    if(way === '复制链接'){
+      copyLink();
+    } else {
+      showToast('已打开' + way + '分享入口');
+      closeModal();
+    }
+  });
+
+  function copyLink(){
+    var url = location.href.split('#')[0];
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('链接已复制到剪贴板');
+        closeModal();
+      }).catch(function(){
+        showToast('复制失败，请手动复制');
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); showToast('链接已复制到剪贴板'); closeModal(); }
+      catch(err){ showToast('复制失败，请手动复制'); }
+      document.body.removeChild(ta);
+    }
+  }
+
+  /* ---------- 反馈 / 举报 / 入驻 / 创作者档案弹窗 ---------- */
+  var modal = document.getElementById('hyModal');
+  var modalTitle = document.getElementById('hyModalTitle');
+  var modalDesc = document.getElementById('hyModalDesc');
+  var modalForm = document.getElementById('hyModalForm');
+  var modalBox = modal ? modal.querySelector('.hy-modal__box') : null;
+  var lastFocus = null;
+
+  function openModal(title, desc, extraHtml, hideForm){
+    if(!modal) return;
+    lastFocus = document.activeElement;
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    var form = modalForm;
+    var oldExtra = modalBox.querySelector('.hy-modal__extra');
+    if(oldExtra) oldExtra.remove();
+    form.style.display = hideForm ? 'none' : 'block';
+    if(hideForm && extraHtml){
+      var div = document.createElement('div');
+      div.className = 'hy-modal__extra';
+      div.innerHTML = extraHtml;
+      modalBox.appendChild(div);
+    }
+    modal.classList.add('is-on');
+    document.body.style.overflow = 'hidden';
+    var closeBtn = document.getElementById('hyModalClose');
+    if(closeBtn) closeBtn.focus();
+  }
+
+  function closeModal(){
+    if(!modal) return;
+    modal.classList.remove('is-on');
+    document.body.style.overflow = '';
+    var extra = modalBox.querySelector('.hy-modal__extra');
+    if(extra) extra.remove();
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  var closeBtn = document.getElementById('hyModalClose');
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  if(modalForm){
+    modalForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      closeModal();
+      modalForm.reset();
+      showToast('信息已提交，我们将在两个工作日内回复');
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var opener = e.target.closest('[data-open]');
+    if(opener){
+      var type = opener.getAttribute('data-open');
+      if(type === 'entry'){
+        openModal('提交企业档案', '填写基本信息后，编辑部将评估是否纳入采集计划。', '', false);
+      } else if(type === 'creator'){
+        openModal('申请创作者入驻', '请留下称呼与联系方式，我们会发送拍摄规范与试拍要求。', '', false);
+      }
+      return;
+    }
+    var reporter = e.target.closest('[data-report]');
+    if(reporter){
+      e.preventDefault();
+      openModal('内容反馈', '如果这条影像存在信息错误或授权问题，请简要说明，我们会尽快核实。', '', false);
+      return;
+    }
+    var creatorCard = e.target.closest('[data-creator]');
+    if(creatorCard){
+      var parts = creatorCard.getAttribute('data-creator').split('|');
+      var html = '<p style="margin:0 0 10px;color:#3f5764">' + (parts[2] || '') + '</p>' +
+        '<p style="margin:0;color:#7a8f9b">作品 ' + (parts[3] || '-') + ' · 关注 ' + (parts[4] || '-') + '</p>' +
+        '<div style="margin-top:16px"><button class="hy-btn" type="button" data-creator-follow>关注该创作者</button></div>';
+      openModal(parts[0] + ' 的创作者档案', parts[1] || '签约创作者', html, true);
+      return;
+    }
+    if(e.target.closest('[data-creator-follow]')){
+      showToast('已关注，更新将有站内提醒');
+      closeModal();
+    }
+  });
+
+  /* ---------- 分享首屏 / 更多灵感 ---------- */
+  var shareTop = document.getElementById('hyShareTop');
+  if(shareTop){
+    shareTop.addEventListener('click', function(){
+      openModal('分享黄页仓库入口', '把这份企业影像档案递给需要的人。', shareHtml, true);
+    });
+  }
+  var ideaBtn = document.getElementById('hyIdeaBtn');
+  if(ideaBtn){
+    ideaBtn.addEventListener('click', function(){
+      showToast('更多创作建议已发送至你的站内消息');
+    });
+  }
+
+  /* ---------- 行业筛选 ---------- */
+  var chips = document.querySelectorAll('#hyFilter .hy-chip');
+  var cards = document.querySelectorAll('#hyStreamGrid [data-cat]');
+  var emptyEl = document.getElementById('hyEmpty');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('is-on'); });
+      chip.classList.add('is-on');
+      var f = chip.getAttribute('data-filter');
+      var visible = 0;
+      cards.forEach(function(card){
+        var show = (f === 'all' || card.getAttribute('data-cat') === f);
+        card.style.display = show ? '' : 'none';
+        if(show) visible++;
+      });
+      if(emptyEl) emptyEl.classList.toggle('is-on', visible === 0);
+      showToast(f === 'all' ? '已显示全部条目' : '已筛选：' + chip.textContent.trim());
+    });
+  });
+
+  /* ---------- 影像墙点击 ---------- */
+  document.querySelectorAll('.hy-wall__item').forEach(function(item){
+    function activate(){
+      var t = item.getAttribute('data-title') || '影像';
+      showToast('正在查看：' + t);
+    }
+    item.addEventListener('click', activate);
+    item.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); }
+    });
+  });
+
+  /* ---------- 回到顶部 ---------- */
+  var topBtn = document.getElementById('hyTop');
+  window.addEventListener('scroll', function(){
+    if(!topBtn) return;
+    if(window.scrollY > 480) topBtn.classList.add('is-on');
+    else topBtn.classList.remove('is-on');
+  }, {passive:true});
+  if(topBtn){
+    topBtn.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  /* ---------- 导航高亮 ---------- */
+  var navLinks = document.querySelectorAll('#hyNav a');
+  var sections = [];
+  navLinks.forEach(function(a){
+    var id = a.getAttribute('href');
+    if(id && id.charAt(0) === '#'){
+      var sec = document.querySelector(id);
+      if(sec) sections.push({link:a, sec:sec});
+    }
+  });
+  if('IntersectionObserver' in window && sections.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          sections.forEach(function(s){ s.link.classList.remove('is-active'); });
+          var hit = sections.filter(function(s){ return s.sec === en.target; })[0];
+          if(hit) hit.link.classList.add('is-active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ io.observe(s.sec); });
+  }
+})();
+</script>
+</body>
+  </html>
